@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Sandpipers Pte. Ltd. | RBS 25 &amp; RBS 35 Concentrate, Singapore</title>
-  <meta name="description" content="The Sandpipers Pte. Ltd. supplies RBS 25 and RBS 35 Concentrate alkaline cleaning agents for laboratories and industry in Singapore and Malaysia.">
+  <title>RBS 25 &amp; RBS 35 Concentrate Singapore &amp; Southeast Asia | Exclusive Distributor | The Sandpipers</title>
+  <meta name="description" content="The Sandpipers Pte. Ltd. is the exclusive Southeast Asia distributor of RBS 25 and RBS 35 Concentrate, exporting from Singapore across the region. Alkaline cleaners for manual and ultrasonic cleaning of glassware, optics, metal parts and electronics.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Figtree:wght@400;500;600;700&family=Lobster&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -38,13 +38,26 @@
       --foam: #F6FAFC;
       --slate: #4E6680;
       --line: #C9DCE8;
+      /* red accent from the logo: CTAs, accent marks and icons only */
+      --red: #D71920;
+      --red-hover: #A81218;
+      --red-tint: #FDECEC;
+      --red-on-navy: #FF8A8A;
       --spring: cubic-bezier(.34, 1.4, .64, 1);
       --ease-out: cubic-bezier(.22, 1, .36, 1);
       /* depth system: base → elevated → floating */
       --shadow-elevated: 0 1px 2px rgba(12, 35, 64, .06), 0 4px 12px -2px rgba(28, 79, 156, .08), 0 12px 32px -8px rgba(28, 79, 156, .10);
       --shadow-floating: 0 2px 4px rgba(12, 35, 64, .06), 0 12px 24px -6px rgba(28, 79, 156, .14), 0 32px 64px -16px rgba(12, 35, 64, .22);
     }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+    /* Above 1440px the whole layout scales with the window, so wide screens keep the same proportions. */
+    @media (min-width: 1440px) { html { font-size: clamp(16px, 1.1111vw, 40px); } }
+    img { max-width: 100%; }
+    /* icons sized in rem so they scale with the layout */
+    svg[width='18'] { width: 1.125rem; height: 1.125rem; }
+    svg[width='20'] { width: 1.25rem; height: 1.25rem; }
+    svg[width='22'] { width: 1.375rem; height: 1.375rem; }
+    svg[width='24'] { width: 1.5rem; height: 1.5rem; }
     body {
       font-family: 'Figtree', sans-serif;
       color: var(--tide);
@@ -64,7 +77,6 @@
       font-stretch: 100%;
       letter-spacing: -0.015em;
     }
-    .measure { max-width: 64ch; }
 
     /* grain */
     .grain { position: relative; isolation: isolate; }
@@ -90,10 +102,16 @@
         radial-gradient(60% 70% at 0% 100%, rgba(28, 79, 156, .45), transparent 70%),
         var(--tide);
     }
+    .shallows-bg {
+      background:
+        radial-gradient(60% 90% at 100% 0%, rgba(18, 163, 201, .30), transparent 70%),
+        radial-gradient(50% 70% at 0% 100%, rgba(255, 255, 255, .8), transparent 70%),
+        var(--shallows);
+    }
 
     /* interactive elements */
     .btn {
-      display: inline-flex; align-items: center; gap: .6rem;
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
       padding: .85rem 1.4rem;
       border-radius: 999px;
       font-weight: 600;
@@ -107,25 +125,46 @@
       outline: 3px solid var(--lagoon);
       outline-offset: 3px;
     }
-    .btn-primary { background: var(--cobalt); color: #fff; box-shadow: 0 1px 2px rgba(12,35,64,.2), 0 8px 20px -6px rgba(28,79,156,.55); }
-    .btn-primary:hover { opacity: .94; }
-    .btn-ghost { background: #fff; color: var(--tide); box-shadow: inset 0 0 0 1.5px var(--line), var(--shadow-elevated); }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 6px 16px rgba(215,25,32,.25); transition: transform .45s var(--spring), background-color .2s ease; }
+    .btn-primary:hover, .btn-primary:active { background: var(--red-hover); }
+    .btn-ghost { background: #fff; color: var(--cobalt); box-shadow: inset 0 0 0 1.5px var(--cobalt), var(--shadow-elevated); }
+
+    /* logo (HTML/SVG until final vector artwork is supplied) */
+    .site-logo { display: inline-flex; flex-direction: column; align-items: flex-start; text-decoration: none; }
+    .site-logo__bird { width: 1.875rem; height: 1.375rem; fill: var(--red); margin: 0 0 -.4375rem .3125rem; }
+    .site-logo__word { font-family: 'Lobster', cursive; font-size: 2.375rem; line-height: 1.05; color: var(--red); }
+    .site-logo--sm .site-logo__bird { width: 1.25rem; height: .9375rem; margin: 0 0 -.3rem .2rem; }
+    .site-logo--sm .site-logo__word { font-size: 1.6rem; }
+    /* bird sits above the word without adding height, so the word itself lines up with the footer text */
+    .site-logo--footer { position: relative; }
+    .site-logo--footer .site-logo__bird { position: absolute; left: .4rem; top: -1.25rem; width: 2.5rem; height: 1.8rem; margin: 0; }
+    .site-logo--footer .site-logo__word { font-size: 3.25rem; }
+    @media (max-width: 640px) { .site-logo__word { font-size: 1.875rem; } }
+
+    /* red accent marks */
+    .eyebrow { display: flex; align-items: center; gap: .6rem; color: var(--red); }
+    .eyebrow::before { content: ''; flex: none; width: 1.5rem; height: 3px; border-radius: 3px; background: var(--red); }
+    .section-title::before { content: ''; display: block; width: 3rem; height: .25rem; border-radius: 999px; background: var(--red); margin-bottom: 1rem; }
+    .method-card { border-top: 3px solid var(--red); }
+    .icon-red { background: var(--red-tint); color: var(--red); }
     .btn-light { background: #fff; color: var(--tide); box-shadow: 0 8px 24px -8px rgba(0,0,0,.4); }
 
     .nav-link { position: relative; padding: .4rem .1rem; font-weight: 500; color: var(--slate); }
     .nav-link::after {
       content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
-      background: var(--lagoon); border-radius: 2px;
+      background: var(--red); border-radius: 2px;
       transform: scaleX(0); transform-origin: left;
       transition: transform .4s var(--ease-out);
     }
-    .nav-link:hover { color: var(--tide); }
+    .nav-link:hover { color: var(--red); }
     .nav-link:hover::after { transform: scaleX(1); }
     .nav-link:active { opacity: .7; }
 
     .link { color: var(--cobalt); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoration-color: rgba(28,79,156,.35); }
     .link:hover { text-decoration-color: var(--cobalt); }
     .link:active { opacity: .7; }
+    .link-light { color: #fff; text-decoration-color: rgba(255,255,255,.4); }
+    .link-light:hover { text-decoration-color: #fff; }
 
     .logo-link { display: inline-block; border-radius: 10px; transition: transform .45s var(--spring); }
     .logo-link:hover { transform: scale(1.03); }
@@ -148,19 +187,49 @@
     .img-frame { position: relative; overflow: hidden; }
     .img-frame .tint { position: absolute; inset: 0; background: var(--cobalt); mix-blend-mode: multiply; opacity: .22; }
     .img-frame .fade { position: absolute; inset: 0; }
-    .crop { background-image: url('brand_assets/image2.png'); background-repeat: no-repeat; }
+    .img-frame > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    /* method badges */
+    .badge {
+      display: inline-flex; align-items: center; gap: .65rem;
+      padding: .7rem 1.1rem .7rem .8rem;
+      border-radius: 16px;
+      background: #fff;
+      font-weight: 600; font-size: 1.05rem; line-height: 1.2;
+      box-shadow: inset 0 0 0 1px var(--line), var(--shadow-elevated);
+    }
+    .badge svg { flex: none; width: 2rem; height: 2rem; padding: .35rem; border-radius: 10px; background: var(--shallows); color: var(--cobalt); }
+    .badge-method svg { background: var(--red-tint); color: var(--red); }
+
+    /* bullet lists */
+    .ticks li { position: relative; padding-left: 1.75rem; }
+    .ticks li::before {
+      content: ''; position: absolute; left: 0; top: .42em;
+      width: 1.05rem; height: 1.05rem; border-radius: 999px;
+      background: var(--shallows) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C4F9C' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 12.5l4 4 8-9'/></svg>") center / 70% no-repeat;
+    }
+    .steps { counter-reset: step; }
+    .steps li { position: relative; padding-left: 2.4rem; counter-increment: step; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute; left: 0; top: .1em;
+      width: 1.7rem; height: 1.7rem; border-radius: 999px;
+      display: grid; place-items: center;
+      background: var(--tide); color: #fff;
+      font-family: 'Archivo', sans-serif; font-weight: 700; font-size: .85rem; line-height: 1;
+    }
 
     /* pH scale */
     .ph-track {
-      position: relative; height: 14px; border-radius: 999px;
+      position: relative; height: .875rem; border-radius: 999px;
       background: linear-gradient(90deg, #ffffff 0%, #DCEEF6 22%, #12A3C9 58%, #1C4F9C 82%, #0C2340 100%);
       box-shadow: inset 0 0 0 1px rgba(12,35,64,.12);
     }
     .ph-mark { position: absolute; top: 50%; transform: translate(-50%, -50%); }
-    .ph-dot { width: 22px; height: 22px; border-radius: 999px; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(12,35,64,.35); }
-    .ph-ring { width: 22px; height: 22px; border-radius: 999px; background: #fff; border: 4px solid var(--tide); box-shadow: 0 2px 8px rgba(12,35,64,.25); }
+    .ph-dot { width: 1.375rem; height: 1.375rem; border-radius: 999px; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(12,35,64,.35); }
+    .ph-ring { width: 1.375rem; height: 1.375rem; border-radius: 999px; background: #fff; border: 4px solid var(--tide); box-shadow: 0 2px 8px rgba(12,35,64,.25); }
 
-    /* comparison table */
+    /* data tables */
     .compare th, .compare td { padding: 1rem 1.25rem; vertical-align: top; text-align: left; }
     .compare tbody tr + tr th, .compare tbody tr + tr td { border-top: 1px solid var(--line); }
     @media (max-width: 639px) {
@@ -172,20 +241,68 @@
       .compare tbody tr + tr td { border-top: 0; }
       .compare td + td { border-left: 1px solid var(--line); }
     }
+    .spec div + div { border-top: 1px solid var(--line); }
+
+    /* form */
+    .field label { display: block; font-weight: 600; font-size: .95rem; margin-bottom: .4rem; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: .8rem 1rem;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--tide);
+      border: 1px solid var(--line);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .field input:hover, .field select:hover, .field textarea:hover { border-color: #9DBDD2; }
+    .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+      outline: none; border-color: var(--lagoon); box-shadow: 0 0 0 4px rgba(18,163,201,.18);
+    }
 
     /* page-load sequence (hero only) */
     @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
     @keyframes float-in { from { opacity: 0; transform: translateY(28px) scale(.96); } to { opacity: 1; transform: none; } }
     .seq > * { animation: rise .9s var(--ease-out) both; }
-    .seq > *:nth-child(2) { animation-delay: .08s; }
-    .seq > *:nth-child(3) { animation-delay: .16s; }
-    .seq > *:nth-child(4) { animation-delay: .24s; }
+    .seq > *:nth-child(2) { animation-delay: .06s; }
+    .seq > *:nth-child(3) { animation-delay: .12s; }
+    .seq > *:nth-child(4) { animation-delay: .18s; }
+    .seq > *:nth-child(5) { animation-delay: .24s; }
+    .seq > *:nth-child(6) { animation-delay: .30s; }
     .hero-product { animation: float-in 1.2s var(--spring) .2s both; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .seq > *, .hero-product { animation: none; }
       .btn, .doc, .logo-link, .nav-link::after, #mobile-menu { transition: none; }
     }
+
+    /* WhatsApp chat */
+    .wa-launcher {
+      display: inline-flex; align-items: center; gap: .65rem;
+      padding: .55rem 1.2rem .55rem .55rem;
+      border-radius: 999px;
+      background: var(--tide); color: #fff;
+      font-weight: 600; line-height: 1.2;
+      box-shadow: 0 2px 4px rgba(12,35,64,.2), 0 14px 32px -8px rgba(12,35,64,.5);
+      transition: transform .45s var(--spring);
+    }
+    .wa-launcher:hover { transform: translateY(-2px); }
+    .wa-launcher:active { transform: scale(.97); }
+    .wa-launcher:focus-visible, .wa-close:focus-visible, .wa-send:focus-visible { outline: 3px solid var(--lagoon); outline-offset: 3px; }
+    .wa-icon { width: 2.4rem; height: 2.4rem; border-radius: 999px; display: grid; place-items: center; background: #25D366; color: #fff; flex: none; }
+    .wa-panel {
+      transform-origin: bottom right;
+      transition: transform .45s var(--spring), opacity .2s ease;
+      box-shadow: var(--shadow-floating);
+    }
+    .wa-panel[data-open='false'] { opacity: 0; transform: translateY(12px) scale(.94); pointer-events: none; }
+    .wa-close { transition: opacity .2s ease; }
+    .wa-close:hover { opacity: .75; }
+    .wa-close:active { opacity: .5; }
+    .wa-send { transition: transform .45s var(--spring), opacity .2s ease; }
+    .wa-send:hover { transform: scale(1.06); }
+    .wa-send:active { transform: scale(.94); }
+    .wa-send:disabled { opacity: .4; transform: none; cursor: not-allowed; }
+    @media (prefers-reduced-motion: reduce) { .wa-launcher, .wa-panel, .wa-send { transition: none; } }
 
     #mobile-menu { transform-origin: top; transition: transform .35s var(--ease-out), opacity .25s ease; }
     #mobile-menu[data-open='false'] { opacity: 0; transform: translateY(-8px); pointer-events: none; }
@@ -194,227 +311,359 @@
 <body class="font-body">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md" style="box-shadow: 0 1px 0 rgba(12,35,64,.08), 0 8px 24px -16px rgba(12,35,64,.25);">
-    <div class="mx-auto max-w-6xl px-5 sm:px-8 h-[76px] flex items-center justify-between gap-6">
-      <a href="#top" class="logo-link" aria-label="The Sandpipers Pte. Ltd., back to top">
-        <img src="brand_assets/logo-blue.png" alt="Sandpipers" width="196" height="58" class="h-[48px] sm:h-[54px] w-auto rounded-[10px]" style="box-shadow: 0 6px 16px -6px rgba(19,49,107,.6);">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md" style="border-bottom: 3px solid var(--red); box-shadow: 0 1px 0 rgba(12,35,64,.08), 0 8px 24px -16px rgba(12,35,64,.25);">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 h-[4.75rem] flex items-center justify-between gap-6">
+      <a href="#top" class="logo-link site-logo" aria-label="Sandpipers Pte Ltd, home">
+        <svg class="site-logo__bird" viewBox="0 0 64 46" aria-hidden="true"><path d="M2 32 L14 29 C20 26 26 25 31 25 L37 3 C40 11 41 19 38 25 C42 24 45 23 48 22 L63 19 L49 25 C46 30 38 34 28 34 C18 34 10 33 2 32 Z"/></svg>
+        <span class="site-logo__word">Sandpipers</span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-[15px]" aria-label="Main">
+      <nav class="hidden lg:flex items-center gap-7 text-[0.9375rem]" aria-label="Main">
         <a class="nav-link" href="#products">Products</a>
         <a class="nav-link" href="#compare">Compare</a>
+        <a class="nav-link" href="#safety">Safety</a>
         <a class="nav-link" href="#about">About</a>
         <a class="nav-link" href="#contact">Contact</a>
-        <a class="btn btn-primary text-[15px] !py-2.5" href="tel:+6597383680">Call +65 9738 3680</a>
+        <a class="btn btn-primary text-[0.9375rem] !py-2.5" href="#enquiry">Request a quotation</a>
       </nav>
-      <button class="menu-btn md:hidden w-11 h-11 rounded-xl grid place-items-center text-tide active:scale-95" style="box-shadow: inset 0 0 0 1.5px var(--line);" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+      <button class="menu-btn lg:hidden w-11 h-11 rounded-xl grid place-items-center text-tide active:scale-95" style="box-shadow: inset 0 0 0 1.5px var(--line);" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" data-open="false" class="md:hidden absolute left-0 right-0 top-full bg-white px-5 pb-6 pt-2" style="box-shadow: var(--shadow-floating);">
+    <div id="mobile-menu" data-open="false" class="lg:hidden absolute left-0 right-0 top-full bg-white px-5 pb-6 pt-2" style="box-shadow: var(--shadow-floating);">
       <nav class="flex flex-col text-lg" aria-label="Mobile">
         <a class="nav-link py-3 self-start" href="#products">Products</a>
         <a class="nav-link py-3 self-start" href="#compare">Compare</a>
+        <a class="nav-link py-3 self-start" href="#safety">Safety</a>
         <a class="nav-link py-3 self-start" href="#about">About</a>
         <a class="nav-link py-3 self-start" href="#contact">Contact</a>
-        <a class="btn btn-primary mt-3 self-start" href="tel:+6597383680">Call +65 9738 3680</a>
+        <a class="btn btn-primary mt-3 self-start" href="#enquiry">Request a quotation</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
 
-    <!-- Hero -->
+    <!-- 1. Hero -->
     <section class="hero-bg grain overflow-hidden">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 pt-14 pb-16 md:pt-20 md:pb-24 grid md:grid-cols-[1.15fr_.85fr] gap-12 items-center">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 pt-12 pb-14 md:pt-16 md:pb-20 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-center">
         <div class="seq">
-          <p class="text-cobalt font-semibold">RBS cleaning concentrates, supplied from Singapore</p>
-          <h1 class="display mt-4 text-[2.4rem] sm:text-5xl lg:text-[3.9rem] font-[750] text-tide">
-            Alkaline cleaners for laboratories and industry
+          <p class="eyebrow font-semibold">Exclusive Southeast Asia Distributor of RBS 25 &amp; RBS 35</p>
+          <h1 class="display mt-4 text-[2.2rem] sm:text-[2.9rem] lg:text-[3.4rem] font-[750] text-tide">
+            Precision cleaning concentrates for laboratories and industry
           </h1>
-          <p class="mt-6 text-lg text-slate measure">
-            The Sandpipers supplies RBS 25 Concentrate and RBS 35 Concentrate to customers in Singapore and Malaysia. Both remove grease, oils, proteins and mineral residues from glassware, metal parts, optics and electronics, and both rinse off without leaving a film.
+          <p class="mt-6 text-[1.0625rem] text-slate">
+            The Sandpipers Pte. Ltd. is the exclusive distributor of RBS 25 Concentrate and RBS 35 Concentrate in Southeast Asia, exporting from Singapore to customers across the region. Manufactured in Belgium by Chemical Products R. Borghgraef S.A., these concentrated alkaline cleaners remove grease, oils, proteins and mineral residues, and rinse away completely without leaving any trace or film.
           </p>
-          <div class="mt-9 flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="#products">See the products</a>
+          <ul class="mt-7 flex flex-wrap gap-3" aria-label="Cleaning methods">
+            <li class="badge badge-method">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+              Manual cleaning
+            </li>
+            <li class="badge badge-method">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/><path d="M2 6c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0" opacity=".5"/><path d="M2 18c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0" opacity=".5"/></svg>
+              Ultrasonic cleaning
+            </li>
+            <li class="badge badge-method">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M3 13c2 1.3 4 1.3 6 0s4-1.3 6 0 4 1.3 6 0"/><path d="M10 3v7M14 3v7"/></svg>
+              Soaking
+            </li>
+          </ul>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn btn-primary" href="#enquiry">Request a quotation</a>
             <a class="btn btn-ghost" href="#compare">Compare RBS 25 and RBS 35</a>
           </div>
+          <ul class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[0.875rem] text-slate" aria-label="Credentials">
+            <li class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--red)]"></span>ISO 9001:2015-certified manufacturer</li>
+            <li class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--red)]"></span>Made in Belgium since 1958</li>
+            <li class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--red)]"></span>Based in Singapore since 2005</li>
+            <li class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--red)]"></span>Exporting across Southeast Asia</li>
+          </ul>
         </div>
 
-        <div class="hero-product relative mx-auto w-full max-w-[420px]">
-          <div class="absolute inset-[8%] rounded-full" style="background: radial-gradient(closest-side, rgba(255,255,255,.95), rgba(220,238,246,.6) 60%, transparent);"></div>
-          <img src="brand_assets/rbs%2025%20concentrate.png" alt="RBS 25 Concentrate in a 5 litre bottle" width="660" height="660" class="relative w-full h-auto" style="mix-blend-mode: multiply;">
-          <div class="absolute left-0 bottom-6 sm:-left-6 bg-white rounded-2xl px-4 py-3 flex items-center gap-3" style="box-shadow: var(--shadow-floating);">
-            <img src="brand_assets/image.png" alt="RBS" width="40" height="40" class="w-10 h-10 object-contain">
-            <div class="leading-tight">
-              <p class="text-sm font-semibold text-tide">20 ml per litre of water</p>
-              <p class="text-[13px] text-slate">Working dilution for both products</p>
-            </div>
-          </div>
+        <div class="hero-product relative mx-auto w-full max-w-[28rem] sm:max-w-[36rem] lg:max-w-none lg:w-[110%] aspect-[20/19] lg:left-6">
+          <div class="absolute -inset-[6%] rounded-full" style="background: radial-gradient(closest-side, rgba(255,255,255,.95), rgba(220,238,246,.55) 60%, transparent);"></div>
+          <img src="brand_assets/rbs25-cutout.png" alt="RBS 25 Concentrate, 5 litre bottle" width="452" height="576" class="absolute left-0 top-0 w-[56%] h-auto" style="filter: drop-shadow(0 18px 24px rgba(12,35,64,.18));">
+          <img src="brand_assets/rbs35-cutout.png" alt="RBS 35 Concentrate, 5 litre bottle" width="488" height="576" class="absolute right-0 bottom-0 w-[60%] h-auto" style="filter: drop-shadow(0 24px 30px rgba(12,35,64,.24));">
         </div>
       </div>
     </section>
 
-    <!-- Applications -->
-    <section aria-labelledby="uses-title" class="bg-white">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-20">
+    <!-- Callout strip -->
+    <div class="bg-tide text-white" style="border-top: 3px solid var(--red);">
+      <p class="mx-auto max-w-6xl px-5 sm:px-8 py-5 text-[1rem] sm:text-[1.0625rem] font-medium">
+        For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <span class="font-bold whitespace-nowrap" style="color: var(--red-on-navy);">Just 20 ml per litre of water.</span>
+      </p>
+    </div>
+
+    <!-- 2. Cleaning methods -->
+    <section id="methods" aria-labelledby="methods-title" class="bg-white">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
+        <h2 id="methods-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">One concentrate, three cleaning methods</h2>
+        <p class="mt-4 text-slate">RBS 25 and RBS 35 are designed for manual cleaning and ultrasonic baths, and for soaking. Both work at the same low dilution of 20 ml per litre of water, ideally at 50&nbsp;°C.</p>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-5">
+          <article class="method-card rounded-[1.5rem] bg-foam p-7 flex flex-col" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <span class="icon-red w-12 h-12 rounded-2xl grid place-items-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+            </span>
+            <h3 class="display-narrow text-xl font-bold mt-5">Manual cleaning</h3>
+            <p class="mt-2 text-slate text-[0.9375rem]">Items are wetted or soaked in the RBS solution, which penetrates the soil. A brush or sponge then lifts and disperses it, followed by a rinse.</p>
+            <div class="mt-auto pt-5">
+              <p class="mt-1 pt-4 text-[0.9375rem]" style="border-top: 1px solid var(--line);"><span class="font-semibold">Best for:</span> <span class="text-slate">small batches and medium-sized items such as flasks, beakers, measuring cylinders and containers</span></p>
+            </div>
+          </article>
+          <article class="method-card rounded-[1.5rem] bg-foam p-7 flex flex-col" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <span class="icon-red w-12 h-12 rounded-2xl grid place-items-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/><path d="M2 6c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0" opacity=".5"/><path d="M2 18c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0" opacity=".5"/></svg>
+            </span>
+            <h3 class="display-narrow text-xl font-bold mt-5">Ultrasonic cleaning</h3>
+            <p class="mt-2 text-slate text-[0.9375rem]">Ultrasonic waves add mechanical action to the RBS solution. Faster and easier to control than manual cleaning, and safer for staff because it avoids splashes.</p>
+            <div class="mt-auto pt-5">
+              <p class="mt-1 pt-4 text-[0.9375rem]" style="border-top: 1px solid var(--line);"><span class="font-semibold">Best for:</span> <span class="text-slate">glassware, small parts, and items with narrow lines, manifolds and joints</span></p>
+            </div>
+          </article>
+          <article class="method-card rounded-[1.5rem] bg-foam p-7 flex flex-col" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <span class="icon-red w-12 h-12 rounded-2xl grid place-items-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M3 13c2 1.3 4 1.3 6 0s4-1.3 6 0 4 1.3 6 0"/><path d="M10 3v7M14 3v7"/></svg>
+            </span>
+            <h3 class="display-narrow text-xl font-bold mt-5">Soaking</h3>
+            <p class="mt-2 text-slate text-[0.9375rem]">No brushing needed. The solution's wetting, emulsifying and dispersing power removes the residue on its own. Higher temperature or concentration speeds it up.</p>
+            <div class="mt-auto pt-5">
+              <p class="mt-1 pt-4 text-[0.9375rem]" style="border-top: 1px solid var(--line);"><span class="font-semibold">Best for:</span> <span class="text-slate">delicate or awkward items; overnight or long cycles (RBS 35 recommended for soaks over 3 hours in tap water)</span></p>
+            </div>
+          </article>
+        </div>
+        <p class="mt-6 text-[0.9375rem] text-slate"><span class="font-semibold text-tide">Tip:</span> For stubborn soils, use an ultrasonic bath, raise the solution temperature, or increase the concentration. Always rinse straight after cleaning, preferably with demineralised water.</p>
+      </div>
+    </section>
+
+    <!-- 3. Applications and industries -->
+    <section id="applications" aria-labelledby="uses-title" class="bg-foam grain">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
+        <h2 id="uses-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Where RBS 25 and RBS 35 are used</h2>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Featured: Glass & Optics -->
+          <article class="sm:col-span-2 lg:row-span-2 bg-white rounded-[1.75rem] overflow-hidden flex flex-col" style="box-shadow: var(--shadow-floating);">
+            <div class="img-frame aspect-[16/10] lg:aspect-auto lg:flex-1 lg:min-h-[18.75rem]">
+              <img src="brand_assets/crops/lenses.png" alt="" width="315" height="148">
+              <div class="tint"></div>
+              <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
+              <h3 class="absolute left-7 bottom-5 display text-white text-[1.9rem] sm:text-[2.2rem] font-[750]">Glass &amp; Optics</h3>
+            </div>
+            <div class="p-7">
+              <p class="text-slate">RBS 25 and RBS 35 are both recommended by the manufacturer for the glass and optics industry. They remove particles, dust, fats and oils completely, leaving surfaces free of the traces and residues that can affect optical performance.</p>
+              <p class="mt-3 text-[0.9375rem]"><span class="font-semibold">Typical uses:</span> <span class="text-slate">optical lenses, microscope slides, thin glass, mirrors, technical glass and laboratory glassware.</span></p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-[1.5rem] overflow-hidden" style="box-shadow: var(--shadow-elevated);">
+            <div class="img-frame aspect-[16/9]">
+              <img src="brand_assets/crops/lab.png" alt="" width="640" height="318" style="object-position: 40% 50%;">
+              <div class="tint"></div>
+            </div>
+            <div class="p-5">
+              <h3 class="display-narrow font-bold text-lg leading-snug">Research &amp; analytical laboratories</h3>
+              <p class="mt-2 text-slate text-[0.90625rem]">Glassware and equipment in stainless steel, plastic, porcelain, quartz and ceramic. Removes organic and mineral residues, distillation residues, proteins and cell cultures for reliable, reproducible results.</p>
+            </div>
+          </article>
+          <article class="bg-white rounded-[1.5rem] overflow-hidden" style="box-shadow: var(--shadow-elevated);">
+            <div class="img-frame aspect-[16/9]">
+              <img src="brand_assets/crops/circuit.png" alt="" width="315" height="158">
+              <div class="tint"></div>
+            </div>
+            <div class="p-5">
+              <h3 class="display-narrow font-bold text-lg leading-snug">Electronics &amp; semiconductors</h3>
+              <p class="mt-2 text-slate text-[0.90625rem]">Cleaning and degreasing of electronic components and silicon or quartz wafers.</p>
+            </div>
+          </article>
+          <article class="bg-white rounded-[1.5rem] overflow-hidden" style="box-shadow: var(--shadow-elevated);">
+            <div class="img-frame aspect-[16/9]">
+              <img src="brand_assets/crops/gears.png" alt="" width="315" height="156">
+              <div class="tint"></div>
+            </div>
+            <div class="p-5">
+              <h3 class="display-narrow font-bold text-lg leading-snug">Metalworking &amp; precision engineering</h3>
+              <p class="mt-2 text-slate text-[0.90625rem]">Degreasing of metal parts, stainless-steel components and injection moulds.</p>
+            </div>
+          </article>
+          <article class="bg-white rounded-[1.5rem] overflow-hidden" style="box-shadow: var(--shadow-elevated);">
+            <div class="img-frame aspect-[16/9]">
+              <img src="brand_assets/crops/flasks.png" alt="" width="640" height="427" style="object-position: 50% 55%;">
+              <div class="tint"></div>
+            </div>
+            <div class="p-5">
+              <h3 class="display-narrow font-bold text-lg leading-snug">Production &amp; manufacturing</h3>
+              <p class="mt-2 text-slate text-[0.90625rem]">Cleaning of production equipment and parts made of glass and stainless steel.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Compatible materials -->
+        <div class="mt-12">
+          <h3 class="display-narrow font-semibold text-lg">Compatible materials</h3>
+          <ul class="mt-4 flex flex-wrap lg:flex-nowrap gap-3 lg:gap-2 xl:gap-3 font-semibold">
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7 15h10"/></svg>Glass</li>
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l6 6-6 14-6-14z"/><path d="M6 8h12M12 2v20"/></svg>Quartz</li>
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8.66 5v10L12 22l-8.66-5V7z"/><circle cx="12" cy="12" r="3.5"/></svg>Stainless steel</li>
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4v3l2 3v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-3z"/><path d="M8 12h8"/></svg>Plastic</li>
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 20h8"/></svg>Porcelain</li>
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg>Ceramic</li>
+            <li class="badge flex-auto justify-center !text-base !py-2.5 lg:!px-3 xl:!pl-[0.8rem] xl:!pr-[1.1rem]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>Silicon</li>
+          </ul>
+          <p class="mt-4 text-[0.875rem] text-slate">Not recommended for white metals (such as aluminium, zinc or tin) because both products are alkaline. <a class="link" href="#enquiry">Ask us</a> if you are unsure about a material.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4–5. Products -->
+    <section id="products" aria-label="Products" class="bg-white">
+
+      <!-- RBS 25 -->
+      <article id="rbs-25" aria-labelledby="rbs25" class="mx-auto max-w-6xl px-5 sm:px-8 pt-16 md:pt-24 pb-12 md:pb-16 grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-14 items-start">
+        <div class="lg:sticky lg:top-[6.25rem]">
+          <div class="rounded-[1.75rem] deep-bg aspect-square relative overflow-hidden max-w-md mx-auto lg:max-w-none" style="box-shadow: var(--shadow-floating);">
+            <div class="absolute inset-[8%] rounded-full" style="background: radial-gradient(closest-side, rgba(18,163,201,.35), transparent 75%);"></div>
+            <img src="brand_assets/rbs25-cutout.png" alt="RBS 25 Concentrate, 5 litre bottle" width="452" height="576" class="absolute inset-[11%] w-[78%] h-[78%] object-contain" style="filter: drop-shadow(0 24px 32px rgba(0,0,0,.35));">
+          </div>
+          <div class="mt-5 grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+            <a class="doc" href="brand_assets/25concafp.pdf" target="_blank" rel="noopener">
+              <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></span>
+              <span class="leading-tight"><span class="block font-semibold">Technical Data Sheet</span><span class="text-[0.8125rem] text-slate">PDF, 735 KB</span></span>
+            </a>
+            <a class="doc" href="brand_assets/25concafs.pdf" target="_blank" rel="noopener">
+              <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg></span>
+              <span class="leading-tight"><span class="block font-semibold">Safety Data Sheet</span><span class="text-[0.8125rem] text-slate">PDF, 233 KB</span></span>
+            </a>
+          </div>
+        </div>
+
         <div>
-          <h2 id="uses-title" class="display text-3xl sm:text-[2.4rem] font-[700]">What RBS concentrates clean</h2>
-          <p class="mt-4 text-slate measure">Used for manual cleaning, soaking and ultrasonic baths. Suitable for stainless steel, plastic, porcelain, quartz, ceramic and glass.</p>
+          <p class="text-cobalt font-semibold">The original RBS cleaner. Cost-effective and multipurpose.</p>
+          <h2 id="rbs25" class="display text-[2.2rem] sm:text-[2.8rem] font-[750] mt-2">RBS 25 Concentrate</h2>
+          <p class="mt-5 text-slate">RBS 25 Concentrate is a multipurpose, concentrated, foaming alkaline liquid cleaner for manual cleaning, ultrasonic baths and soaking. Its high emulsifying and wetting power gives excellent penetration in the cleaning bath. It removes organic and mineral residues, greases, oils, distillation residues, proteins and cell cultures, then rinses away completely without leaving any traces or invisible film.</p>
+          <p class="mt-4 text-slate">RBS 25 was the first product in the RBS range, introduced as a safer alternative to chromic acid solutions for cleaning laboratory glassware.</p>
+
+          <div class="mt-9 grid sm:grid-cols-2 gap-8">
+            <div>
+              <h3 class="display-narrow font-semibold text-lg">Key benefits</h3>
+              <ul class="ticks mt-3 space-y-2 text-[0.9375rem] text-slate">
+                <li>High cleaning power at low concentration (2%)</li>
+                <li>Wide range of applications in laboratories and industry</li>
+                <li>High wetting and emulsifying power</li>
+                <li>Total rinse: no traces or film</li>
+                <li>Biodegradable surfactants</li>
+                <li>Cost-effective</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="display-narrow font-semibold text-lg">How to use</h3>
+              <ol class="steps mt-3 space-y-3 text-[0.9375rem] text-slate">
+                <li>Dilute 20 ml of RBS 25 Concentrate per litre of water, preferably at 50&nbsp;°C.</li>
+                <li>Clean manually, in an ultrasonic bath, or by full immersion (soaking).</li>
+                <li>Keep soaking time under 3 hours in tap water to avoid limescale deposits. For longer soaks, dilute in demineralised water.</li>
+                <li>Rinse immediately with tap water, or better, with demineralised water.</li>
+              </ol>
+            </div>
+          </div>
+
+          <p class="mt-8 text-[0.9375rem]"><span class="font-semibold">Recommended for:</span> <span class="text-slate">laboratory glassware and equipment; electronic components; silicon and quartz wafers; metal parts; injection moulds; glass and optical lenses; production equipment.</span></p>
+
+          <h3 class="display-narrow font-semibold text-lg mt-9">Technical data</h3>
+          <dl class="spec mt-3 rounded-2xl overflow-hidden text-[0.9375rem]" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Appearance</dt><dd class="font-medium">White foaming liquid, neutral smell</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">pH (concentrate)</dt><dd class="font-medium">13.6</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">pH (2% solution)</dt><dd class="font-medium">11.9</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Density at 20&nbsp;°C</dt><dd class="font-medium">1.094</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Working dilution</dt><dd class="font-medium">20 ml per litre (2% v/v)</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Ingredients</dt><dd class="font-medium">Anionic and non-ionic surfactants, phosphates and polyphosphates, chlorinated agents, sodium hydroxide</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Pack sizes</dt><dd class="font-medium">5 L bottle, carton of 4 × 5 L, 20 kg drum (other sizes on request)</dd></div>
+          </dl>
         </div>
-        <ul class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          <li>
-            <div class="img-frame rounded-2xl aspect-[4/3]" style="box-shadow: var(--shadow-elevated);">
-              <div class="crop absolute inset-0" style="background-size: 430% 216%; background-position: 0% 0%;"></div>
-              <div class="tint"></div>
-              <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
-              <p class="absolute left-4 bottom-3 right-4 text-white font-semibold leading-snug">Laboratory glassware</p>
+      </article>
+
+      <!-- RBS 35 -->
+      <article id="rbs-35" aria-labelledby="rbs35" class="mx-auto max-w-6xl px-5 sm:px-8 pt-12 md:pt-16 pb-16 md:pb-24 grid lg:grid-cols-[7fr_5fr] gap-10 lg:gap-14 items-start" style="border-top: 1px solid var(--line);">
+        <div class="lg:order-2 lg:sticky lg:top-[6.25rem]">
+          <div class="rounded-[1.75rem] shallows-bg aspect-square relative overflow-hidden max-w-md mx-auto lg:max-w-none" style="box-shadow: var(--shadow-floating);">
+            <div class="absolute inset-[8%] rounded-full" style="background: radial-gradient(closest-side, rgba(255,255,255,.9), transparent 75%);"></div>
+            <img src="brand_assets/rbs35-cutout.png" alt="RBS 35 Concentrate, 5 litre bottle" width="488" height="576" class="absolute inset-[11%] w-[78%] h-[78%] object-contain" style="filter: drop-shadow(0 24px 32px rgba(12,35,64,.22));">
+          </div>
+          <div class="mt-5 grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+            <a class="doc" href="brand_assets/35concafp.pdf" target="_blank" rel="noopener">
+              <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></span>
+              <span class="leading-tight"><span class="block font-semibold">Technical Data Sheet</span><span class="text-[0.8125rem] text-slate">PDF, 675 KB</span></span>
+            </a>
+            <a class="doc" href="brand_assets/35concafs.pdf" target="_blank" rel="noopener">
+              <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg></span>
+              <span class="leading-tight"><span class="block font-semibold">Safety Data Sheet</span><span class="text-[0.8125rem] text-slate">PDF, 239 KB</span></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:order-1">
+          <p class="text-cobalt font-semibold">High-performance cleaning, unaffected by hard water.</p>
+          <h2 id="rbs35" class="display text-[2.2rem] sm:text-[2.8rem] font-[750] mt-2">RBS 35 Concentrate</h2>
+          <p class="mt-5 text-slate">RBS 35 Concentrate is a multipurpose, concentrated, foaming alkaline liquid cleaner for manual cleaning, ultrasonic baths and soaking. It is insensitive to water hardness, so items can soak for long periods in ordinary tap water without limescale deposits. It removes organic and mineral residues, distillation residues, fats, ointments and cell cultures, and rinses away completely without leaving any traces or invisible film.</p>
+          <p class="mt-4 text-slate">RBS 35 is a safer alternative to solvents and sulfochromic acid cleaning mixtures, which are toxic and hazardous.</p>
+
+          <div class="mt-9 grid sm:grid-cols-2 gap-8">
+            <div>
+              <h3 class="display-narrow font-semibold text-lg">Key benefits</h3>
+              <ul class="ticks mt-3 space-y-2 text-[0.9375rem] text-slate">
+                <li>High cleaning power at low concentration (2%)</li>
+                <li>Insensitive to water hardness: no limescale, even on long soaks</li>
+                <li>High wetting and emulsifying power</li>
+                <li>Total rinse: no traces or film</li>
+                <li>Biodegradable surfactants</li>
+                <li>Milder hazard classification than RBS 25 (eye irritant only)</li>
+                <li>Cost-effective</li>
+              </ul>
             </div>
-          </li>
-          <li>
-            <div class="img-frame rounded-2xl aspect-[4/3]" style="box-shadow: var(--shadow-elevated);">
-              <div class="crop absolute inset-0" style="background-size: 430% 216%; background-position: 0% 100%;"></div>
-              <div class="tint"></div>
-              <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
-              <p class="absolute left-4 bottom-3 right-4 text-white font-semibold leading-snug">Optical lenses and glass</p>
+            <div>
+              <h3 class="display-narrow font-semibold text-lg">How to use</h3>
+              <ol class="steps mt-3 space-y-3 text-[0.9375rem] text-slate">
+                <li>Dilute 20 ml of RBS 35 Concentrate per litre of distilled or tap water, preferably at 50&nbsp;°C.</li>
+                <li>Clean manually, in an ultrasonic bath, or by full immersion (soaking). Prolonged soaking in tap water is fine.</li>
+                <li>Rinse immediately with tap water, or better, with deionised water.</li>
+              </ol>
             </div>
-          </li>
-          <li>
-            <div class="img-frame rounded-2xl aspect-[4/3]" style="box-shadow: var(--shadow-elevated);">
-              <div class="crop absolute inset-0" style="background-size: 430% 216%; background-position: 100% 0%;"></div>
-              <div class="tint"></div>
-              <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
-              <p class="absolute left-4 bottom-3 right-4 text-white font-semibold leading-snug">Electronic parts and silicon wafers</p>
-            </div>
-          </li>
-          <li>
-            <div class="img-frame rounded-2xl aspect-[4/3]" style="box-shadow: var(--shadow-elevated);">
-              <div class="crop absolute inset-0" style="background-size: 430% 216%; background-position: 100% 100%;"></div>
-              <div class="tint"></div>
-              <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
-              <p class="absolute left-4 bottom-3 right-4 text-white font-semibold leading-snug">Metal parts and injection moulds</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+
+          <p class="mt-8 text-[0.9375rem]"><span class="font-semibold">Recommended for:</span> <span class="text-slate">laboratory glassware and equipment in plastic, porcelain, ceramic, quartz and stainless steel; metal parts; moulds; lenses and glass; silicon wafers; production equipment.</span></p>
+
+          <h3 class="display-narrow font-semibold text-lg mt-9">Technical data</h3>
+          <dl class="spec mt-3 rounded-2xl overflow-hidden text-[0.9375rem]" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Appearance</dt><dd class="font-medium">White foaming liquid, neutral smell</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">pH (concentrate)</dt><dd class="font-medium">13.2</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">pH (2% solution)</dt><dd class="font-medium">11.5</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Density at 20&nbsp;°C</dt><dd class="font-medium">1.07</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Working dilution</dt><dd class="font-medium">20 ml per litre (2% v/v)</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Ingredients</dt><dd class="font-medium">Anionic and non-ionic surfactants, phosphates and polyphosphates, chlorinated agents, sodium hydroxide</dd></div>
+            <div class="grid sm:grid-cols-[11.25rem_1fr] gap-x-4 gap-y-0.5 px-5 py-3"><dt class="text-slate">Pack sizes</dt><dd class="font-medium">5 L bottle, carton of 4 × 5 L, 20 kg drum (other sizes on request)</dd></div>
+          </dl>
+        </div>
+      </article>
     </section>
 
-    <!-- Products -->
-    <section id="products" aria-labelledby="products-title" class="bg-foam grain">
+    <!-- 6. Comparison -->
+    <section id="compare" aria-labelledby="compare-title" class="bg-foam grain">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
-        <h2 id="products-title" class="display text-3xl sm:text-[2.4rem] font-[700]">Two products</h2>
-        <p class="mt-4 text-slate measure">Both are concentrated, foaming alkaline liquids made by Chemical Products s.a. in Brussels. They share a dilution rate and pack sizes, and differ in how they handle hard water and long soaks.</p>
-
-        <div class="mt-12 grid lg:grid-cols-2 gap-6 lg:gap-8">
-
-          <!-- RBS 25 -->
-          <article class="bg-white rounded-[28px] overflow-hidden flex flex-col" style="box-shadow: var(--shadow-elevated);" aria-labelledby="rbs25">
-            <div class="px-7 sm:px-9 pt-8 pb-7 text-white deep-bg">
-              <p class="text-[15px] text-shallows/80">Cost-effective, wide range of uses</p>
-              <h3 id="rbs25" class="display text-[2rem] sm:text-[2.4rem] font-[750] mt-1">RBS 25 Concentrate</h3>
-              <p class="mt-3 text-shallows/90">Multipurpose concentrated foaming alkaline cleaning agent for manual, soaking and ultrasonic cleaning.</p>
-            </div>
-            <div class="px-7 sm:px-9 py-8 flex-1 flex flex-col gap-7">
-              <p class="text-slate">High emulsifying and wetting power gives strong penetration in cleaning baths. It removes organic and mineral residues, greases, oils, distillation residues, proteins and cell cultures. In industry it degreases electronic components, silicon wafers, metal parts, injection moulds, glass and optical lenses.</p>
-
-              <div>
-                <h4 class="display-narrow font-semibold text-lg">How to use</h4>
-                <p class="mt-2 text-slate">Dilute 20 ml per litre of water, ideally at 50&nbsp;°C. Keep soaking under 3 hours to avoid limescale deposits, or use demineralised water for longer soaks. Rinse straight away with tap water, or better, demineralised water.</p>
-              </div>
-
-              <dl class="grid grid-cols-3 gap-px rounded-2xl overflow-hidden bg-[var(--line)]" style="box-shadow: inset 0 0 0 1px var(--line);">
-                <div class="bg-white p-4"><dt class="text-[13px] text-slate">pH, neat</dt><dd class="display-narrow text-2xl font-bold mt-1">13.6</dd></div>
-                <div class="bg-white p-4"><dt class="text-[13px] text-slate">pH at 2%</dt><dd class="display-narrow text-2xl font-bold mt-1">11.9</dd></div>
-                <div class="bg-white p-4"><dt class="text-[13px] text-slate">Density</dt><dd class="display-narrow text-2xl font-bold mt-1">1.094</dd></div>
-              </dl>
-
-              <div class="mt-auto grid sm:grid-cols-2 gap-3">
-                <a class="doc" href="brand_assets/25concafp.pdf" target="_blank" rel="noopener">
-                  <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></span>
-                  <span class="leading-tight"><span class="block font-semibold">Product data sheet</span><span class="text-[13px] text-slate">PDF, 735 KB</span></span>
-                </a>
-                <a class="doc" href="brand_assets/25concafs.pdf" target="_blank" rel="noopener">
-                  <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg></span>
-                  <span class="leading-tight"><span class="block font-semibold">Safety data sheet</span><span class="text-[13px] text-slate">PDF, 233 KB</span></span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- RBS 35 -->
-          <article class="bg-white rounded-[28px] overflow-hidden flex flex-col" style="box-shadow: var(--shadow-elevated);" aria-labelledby="rbs35">
-            <div class="px-7 sm:px-9 pt-8 pb-7 text-tide" style="background: radial-gradient(60% 90% at 100% 0%, rgba(18,163,201,.35), transparent 70%), var(--shallows);">
-              <p class="text-[15px] text-cobalt">Unaffected by water hardness, total rinse</p>
-              <h3 id="rbs35" class="display text-[2rem] sm:text-[2.4rem] font-[750] mt-1">RBS 35 Concentrate</h3>
-              <p class="mt-3 text-slate">Multipurpose concentrated foaming alkaline cleaning agent for manual, soaking and ultrasonic cleaning.</p>
-            </div>
-            <div class="px-7 sm:px-9 py-8 flex-1 flex flex-col gap-7">
-              <p class="text-slate">Built for high-performance cleaning where soaks run long or tap water is hard. In laboratories it removes organic and mineral residues, distillation residues, fats, ointments and cell cultures. In industry it degreases metal parts, moulds, lenses, glass and silicon wafers.</p>
-
-              <div>
-                <h4 class="display-narrow font-semibold text-lg">How to use</h4>
-                <p class="mt-2 text-slate">Dilute 20 ml per litre of distilled or tap water, ideally at 50&nbsp;°C. Items can soak for extended periods in tap water without limescale deposits. Rinse straight away with tap water, or better, deionised water.</p>
-              </div>
-
-              <dl class="grid grid-cols-3 gap-px rounded-2xl overflow-hidden bg-[var(--line)]" style="box-shadow: inset 0 0 0 1px var(--line);">
-                <div class="bg-white p-4"><dt class="text-[13px] text-slate">pH, neat</dt><dd class="display-narrow text-2xl font-bold mt-1">13.2</dd></div>
-                <div class="bg-white p-4"><dt class="text-[13px] text-slate">pH at 2%</dt><dd class="display-narrow text-2xl font-bold mt-1">11.5</dd></div>
-                <div class="bg-white p-4"><dt class="text-[13px] text-slate">Density</dt><dd class="display-narrow text-2xl font-bold mt-1">1.07</dd></div>
-              </dl>
-
-              <div class="mt-auto grid sm:grid-cols-2 gap-3">
-                <a class="doc" href="brand_assets/35concafp.pdf" target="_blank" rel="noopener">
-                  <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></span>
-                  <span class="leading-tight"><span class="block font-semibold">Product data sheet</span><span class="text-[13px] text-slate">PDF, 675 KB</span></span>
-                </a>
-                <a class="doc" href="brand_assets/35concafs.pdf" target="_blank" rel="noopener">
-                  <span class="doc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg></span>
-                  <span class="leading-tight"><span class="block font-semibold">Safety data sheet</span><span class="text-[13px] text-slate">PDF, 239 KB</span></span>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Shared specification -->
-        <div class="mt-8 rounded-[28px] bg-white/70 px-7 sm:px-9 py-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8" style="box-shadow: inset 0 0 0 1px var(--line);">
-          <div>
-            <h4 class="display-narrow font-semibold">Appearance</h4>
-            <p class="mt-2 text-slate text-[15px]">White foaming liquid with a neutral smell.</p>
-          </div>
-          <div>
-            <h4 class="display-narrow font-semibold">Ingredients</h4>
-            <p class="mt-2 text-slate text-[15px]">Anionic and non-ionic surfactants, phosphates and polyphosphates, chlorinated agents, sodium hydroxide.</p>
-          </div>
-          <div>
-            <h4 class="display-narrow font-semibold">Pack sizes</h4>
-            <p class="mt-2 text-slate text-[15px]">5 L bottle, carton of 4 × 5 L, or 20 kg drum. Ask us about other sizes.</p>
-          </div>
-          <div>
-            <h4 class="display-narrow font-semibold">Handling</h4>
-            <p class="mt-2 text-slate text-[15px]">Do not mix with other products. Not recommended for white metals. Renew baths when pH drops or foam disappears.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Comparison -->
-    <section id="compare" aria-labelledby="compare-title" class="bg-white">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
-        <h2 id="compare-title" class="display text-3xl sm:text-[2.4rem] font-[700]">RBS 25 or RBS 35?</h2>
-        <p class="mt-4 text-slate measure">Both clean the same materials at the same 20 ml per litre dilution. Choose RBS 35 if your tap water is hard or items need to soak for more than 3 hours. Choose RBS 25 for routine manual and ultrasonic cycles where cost matters most.</p>
+        <h2 id="compare-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Which one is right for you?</h2>
+        <p class="mt-4 text-slate">Both products clean the same materials, at the same 20 ml per litre dilution, by manual, ultrasonic or soaking methods. Choose <strong class="text-tide">RBS 35</strong> if your water is hard or items soak for more than 3 hours. Choose <strong class="text-tide">RBS 25</strong> for routine manual and ultrasonic cycles where cost matters most.</p>
 
         <!-- Alkalinity scale -->
-        <figure class="mt-12 rounded-[28px] bg-foam px-6 sm:px-10 pt-8 pb-9" style="box-shadow: var(--shadow-elevated);">
+        <figure class="mt-12 rounded-[1.75rem] bg-white px-6 sm:px-10 pt-8 pb-9" style="box-shadow: var(--shadow-elevated);">
           <figcaption class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
             <span class="display-narrow font-semibold text-lg">Alkalinity on the pH scale</span>
-            <span class="flex flex-wrap gap-x-6 gap-y-2 text-[14px] text-slate">
+            <span class="flex flex-wrap gap-x-6 gap-y-2 text-[0.875rem] text-slate">
               <span class="inline-flex items-center gap-2"><span class="inline-block w-3.5 h-3.5 rounded-full bg-tide"></span>Neat concentrate</span>
               <span class="inline-flex items-center gap-2"><span class="inline-block w-3.5 h-3.5 rounded-full bg-white" style="border: 3px solid var(--tide);"></span>Diluted to 2%</span>
             </span>
           </figcaption>
 
           <div class="mt-10 space-y-10">
-            <div class="grid sm:grid-cols-[140px_1fr] items-center gap-x-6 gap-y-4">
+            <div class="grid sm:grid-cols-[8.75rem_1fr] items-center gap-x-6 gap-y-4">
               <p class="display-narrow font-bold">RBS 25</p>
               <div class="ph-track">
                 <!-- position = (pH - 7) / 7 -->
@@ -422,16 +671,16 @@
                 <span class="ph-mark" style="left: 94.3%;"><span class="block ph-dot bg-tide"></span><span class="absolute left-1/2 -translate-x-1/2 -top-8 text-sm font-semibold whitespace-nowrap">13.6</span></span>
               </div>
             </div>
-            <div class="grid sm:grid-cols-[140px_1fr] items-center gap-x-6 gap-y-4">
+            <div class="grid sm:grid-cols-[8.75rem_1fr] items-center gap-x-6 gap-y-4">
               <p class="display-narrow font-bold">RBS 35</p>
               <div class="ph-track">
                 <span class="ph-mark" style="left: 64.3%;"><span class="block ph-ring"></span><span class="absolute left-1/2 -translate-x-1/2 -top-8 text-sm font-semibold whitespace-nowrap">11.5</span></span>
                 <span class="ph-mark" style="left: 88.6%;"><span class="block ph-dot bg-tide"></span><span class="absolute left-1/2 -translate-x-1/2 -top-8 text-sm font-semibold whitespace-nowrap">13.2</span></span>
               </div>
             </div>
-            <div class="grid sm:grid-cols-[140px_1fr] gap-x-6">
+            <div class="grid sm:grid-cols-[8.75rem_1fr] gap-x-6">
               <span class="hidden sm:block"></span>
-              <div class="flex justify-between text-[13px] text-slate">
+              <div class="flex justify-between text-[0.8125rem] text-slate">
                 <span>7 neutral</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
               </div>
             </div>
@@ -439,12 +688,12 @@
         </figure>
 
         <!-- Table -->
-        <div class="mt-10 overflow-x-auto rounded-[28px]" style="box-shadow: inset 0 0 0 1px var(--line);">
-          <table class="compare w-full text-[15px]">
+        <div class="mt-10 overflow-hidden rounded-[1.75rem] bg-white" style="box-shadow: inset 0 0 0 1px var(--line);">
+          <table class="compare w-full text-[0.9375rem]">
             <caption class="sr-only">Differences between RBS 25 Concentrate and RBS 35 Concentrate</caption>
             <thead>
               <tr class="bg-tide text-white">
-                <th scope="col" class="w-[28%] font-semibold text-shallows/80">&nbsp;</th>
+                <th scope="col" class="w-[28%]">&nbsp;</th>
                 <th scope="col" class="display-narrow text-lg font-bold">RBS 25 Concentrate</th>
                 <th scope="col" class="display-narrow text-lg font-bold">RBS 35 Concentrate</th>
               </tr>
@@ -452,8 +701,18 @@
             <tbody class="text-slate">
               <tr>
                 <th scope="row" class="font-semibold text-tide">Best for</th>
-                <td>Routine manual, soaking and ultrasonic cleaning at low cost</td>
-                <td>Long soaks and hard tap water, with a total rinse</td>
+                <td>Routine manual, ultrasonic and short soaking cycles</td>
+                <td>Long soaks, hard tap water, high-performance cleaning</td>
+              </tr>
+              <tr>
+                <th scope="row" class="font-semibold text-tide">Manual &amp; ultrasonic cleaning</th>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <th scope="row" class="font-semibold text-tide">Glass &amp; optics</th>
+                <td>Yes</td>
+                <td>Yes</td>
               </tr>
               <tr>
                 <th scope="row" class="font-semibold text-tide">Water hardness</th>
@@ -461,17 +720,12 @@
                 <td>Insensitive to water hardness</td>
               </tr>
               <tr>
-                <th scope="row" class="font-semibold text-tide">Soaking time</th>
-                <td>Up to 3 hours in tap water; use demineralised water for longer</td>
-                <td>Prolonged soaking in tap water</td>
+                <th scope="row" class="font-semibold text-tide">Maximum soak in tap water</th>
+                <td>3 hours (longer with demineralised water)</td>
+                <td>Prolonged soaking</td>
               </tr>
               <tr>
-                <th scope="row" class="font-semibold text-tide">Dilution water</th>
-                <td>Tap or demineralised water</td>
-                <td>Tap or distilled water</td>
-              </tr>
-              <tr>
-                <th scope="row" class="font-semibold text-tide">pH neat / at 2%</th>
+                <th scope="row" class="font-semibold text-tide">pH concentrate / 2%</th>
                 <td>13.6 / 11.9</td>
                 <td>13.2 / 11.5</td>
               </tr>
@@ -481,120 +735,278 @@
                 <td>1.07</td>
               </tr>
               <tr>
-                <th scope="row" class="font-semibold text-tide">Hazard label (EU CLP)</th>
-                <td><span class="font-semibold text-tide">Danger.</span> Causes skin irritation (H315) and serious eye damage (H318).</td>
-                <td><span class="font-semibold text-tide">Warning.</span> Causes serious eye irritation (H319).</td>
+                <th scope="row" class="font-semibold text-tide">Hazard label (GHS/CLP)</th>
+                <td><span class="font-semibold text-tide">Danger:</span> causes skin irritation and serious eye damage</td>
+                <td><span class="font-semibold text-tide">Warning:</span> causes serious eye irritation</td>
               </tr>
               <tr>
                 <th scope="row" class="font-semibold text-tide">Transport</th>
-                <td>Not regulated for transport</td>
-                <td>Not regulated for transport</td>
+                <td>Not regulated as dangerous goods</td>
+                <td>Not regulated as dangerous goods</td>
               </tr>
-              <tr class="bg-foam">
-                <th scope="row" class="font-semibold text-tide">Same for both</th>
-                <td colspan="2">20 ml per litre at 50&nbsp;°C. White foaming liquid. Same ingredients and pack sizes. Rinses off without traces or film. Not for white metals.</td>
+              <tr>
+                <th scope="row" class="font-semibold text-tide">Pack sizes</th>
+                <td>5 L, 4 × 5 L, 20 kg</td>
+                <td>5 L, 4 × 5 L, 20 kg</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="mt-4 text-[13px] text-slate">Figures from the manufacturer's product data sheets (09/02/2022) and safety data sheets (revision 11/03/2026). Always read the safety data sheet before use.</p>
+        <p class="mt-6 text-slate">Not sure which to choose? <a class="link" href="#enquiry">Tell us what you clean and how</a>, and we will recommend the right product.</p>
       </div>
     </section>
 
-    <!-- About -->
+    <!-- 7. Safety -->
+    <section id="safety" aria-labelledby="safety-title" class="bg-white">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
+        <h2 id="safety-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Safe handling and storage</h2>
+        <p class="mt-4 text-slate">RBS 25 and RBS 35 are professional and industrial cleaning products. Always read the Safety Data Sheet before use. Both products are non-flammable and are not classified as dangerous goods for road, sea or air transport.</p>
+
+        <div class="mt-10 overflow-hidden rounded-[1.5rem]" style="box-shadow: inset 0 0 0 1px var(--line);">
+          <table class="compare w-full text-[0.9375rem]">
+            <caption class="sr-only">Hazard labelling for RBS 25 and RBS 35</caption>
+            <thead>
+              <tr class="bg-foam">
+                <th scope="col" class="w-[28%]">&nbsp;</th>
+                <th scope="col" class="display-narrow font-bold">RBS 25 Concentrate</th>
+                <th scope="col" class="display-narrow font-bold">RBS 35 Concentrate</th>
+              </tr>
+            </thead>
+            <tbody class="text-slate">
+              <tr>
+                <th scope="row" class="font-semibold text-tide">Signal word</th>
+                <td class="font-semibold text-tide">Danger</td>
+                <td class="font-semibold text-tide">Warning</td>
+              </tr>
+              <tr>
+                <th scope="row" class="font-semibold text-tide">Hazard statements</th>
+                <td>H315 Causes skin irritation<br>H318 Causes serious eye damage</td>
+                <td>H319 Causes serious eye irritation</td>
+              </tr>
+              <tr>
+                <th scope="row" class="font-semibold text-tide">Pictogram</th>
+                <td>GHS05 (corrosion)</td>
+                <td>GHS07 (exclamation mark)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-5">
+          <div class="rounded-[1.5rem] bg-foam p-7" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <h3 class="display-narrow font-bold text-lg">Personal protection <span class="font-normal text-slate text-[0.9375rem]">(both products)</span></h3>
+            <dl class="mt-4 space-y-3 text-[0.9375rem]">
+              <div><dt class="font-semibold">Eyes</dt><dd class="text-slate">Chemical goggles or face shield</dd></div>
+              <div><dt class="font-semibold">Hands</dt><dd class="text-slate">Nitrile gloves (≥ 0.11 mm, breakthrough &gt; 480 min)</dd></div>
+              <div><dt class="font-semibold">Body</dt><dd class="text-slate">Suitable protective clothing</dd></div>
+              <div><dt class="font-semibold">Breathing</dt><dd class="text-slate">P2 half mask only if spray or mist is generated</dd></div>
+            </dl>
+          </div>
+          <div class="rounded-[1.5rem] bg-foam p-7" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <h3 class="display-narrow font-bold text-lg">First aid <span class="font-normal text-slate text-[0.9375rem]">(both products)</span></h3>
+            <dl class="mt-4 space-y-3 text-[0.9375rem]">
+              <div><dt class="font-semibold">Eyes</dt><dd class="text-slate">Rinse cautiously with water for several minutes; remove contact lenses if easy to do; keep rinsing. See an ophthalmologist if irritation persists. (RBS 25: call a doctor or poison centre immediately.)</dd></div>
+              <div><dt class="font-semibold">Skin</dt><dd class="text-slate">Remove contaminated clothing and rinse skin with water. Get medical advice if irritation develops.</dd></div>
+              <div><dt class="font-semibold">Swallowed</dt><dd class="text-slate">Rinse mouth, do not induce vomiting, call a doctor immediately.</dd></div>
+              <div><dt class="font-semibold">Inhaled</dt><dd class="text-slate">Move to fresh air.</dd></div>
+            </dl>
+          </div>
+          <div class="rounded-[1.5rem] bg-foam p-7" style="box-shadow: inset 0 0 0 1px var(--line);">
+            <h3 class="display-narrow font-bold text-lg">Storage and handling</h3>
+            <ul class="ticks mt-4 space-y-2.5 text-[0.9375rem] text-slate">
+              <li>Store in the original closed container in a cool, well-ventilated place, ideally 5–25&nbsp;°C (tolerates 3–50&nbsp;°C for up to 200 days).</li>
+              <li>Keep away from acids and do not mix with other products.</li>
+              <li>Not for use on white metals or other sensitive metals.</li>
+              <li>Renew cleaning baths regularly; a drop in pH or loss of foam means the bath is weakening.</li>
+              <li>Avoid release to drains and the environment; dispose of according to local regulations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mt-8 text-[0.9375rem] text-slate"><span class="font-semibold text-tide">Environmental note:</span> The surfactants in both products meet the biodegradability criteria of EU Detergents Regulation (EC) No 648/2004. Their Safety Data Sheets are issued under EU REACH, and neither product contains substances on the REACH Candidate List (SVHC) or Restriction List.</p>
+      </div>
+    </section>
+
+    <!-- 8. Manufacturer -->
+    <section id="manufacturer" aria-labelledby="maker-title" class="shallows-bg grain">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24 grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
+        <div>
+          <h2 id="maker-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Made in Belgium by RBS, competence in cleaning</h2>
+          <p class="mt-5 text-slate">RBS 25 and RBS 35 are manufactured in Brussels, Belgium, by Chemical Products R. Borghgraef S.A., a specialist in detergents for laboratory and industrial cleaning processes. Founded by René Borghgraef in 1958, the company developed RBS 25 as its first product: a safer alternative to chromic acid for cleaning laboratory glassware. Its quality management system is certified to <strong class="text-tide">ISO 9001:2015</strong>, and since 2025 the company has been part of the international <strong class="text-tide">Christeyns Group</strong>, with the same RBS products and quality standards.</p>
+          <div class="mt-8 inline-flex items-center gap-4 rounded-2xl bg-white px-5 py-4" style="box-shadow: var(--shadow-elevated);">
+            <img src="brand_assets/image.png" alt="RBS" width="56" height="46" class="w-14 h-auto">
+            <p class="text-[0.875rem] leading-snug text-slate">Chemical Products R. Borghgraef S.A.<br>Rue Bollinckx 271-273, B-1190 Brussels, Belgium<br><a class="link" href="https://www.rbs-cp.be" target="_blank" rel="noopener">rbs-cp.be</a></p>
+          </div>
+        </div>
+
+        <ol class="relative space-y-6 pl-8 before:absolute before:left-[0.4375rem] before:top-2 before:bottom-2 before:w-[0.125rem] before:bg-cobalt/20" aria-label="Manufacturer milestones">
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-white" style="box-shadow: inset 0 0 0 3px var(--cobalt);"></span><p class="display-narrow font-bold text-cobalt">1958</p><p class="text-[0.9375rem] text-slate">René Borghgraef begins detergent activities; RBS 25 follows as the first RBS product</p></li>
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-white" style="box-shadow: inset 0 0 0 3px var(--cobalt);"></span><p class="display-narrow font-bold text-cobalt">1964</p><p class="text-[0.9375rem] text-slate">Becomes Chemical Products R. Borghgraef; RBS 35 added to the range</p></li>
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-white" style="box-shadow: inset 0 0 0 3px var(--cobalt);"></span><p class="display-narrow font-bold text-cobalt">1977</p><p class="text-[0.9375rem] text-slate">Distribution extended to the United States</p></li>
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-white" style="box-shadow: inset 0 0 0 3px var(--cobalt);"></span><p class="display-narrow font-bold text-cobalt">1982</p><p class="text-[0.9375rem] text-slate">Moves to larger facilities in Brussels</p></li>
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-white" style="box-shadow: inset 0 0 0 3px var(--cobalt);"></span><p class="display-narrow font-bold text-cobalt">1997</p><p class="text-[0.9375rem] text-slate">New laboratories and warehouses built at the Brussels site</p></li>
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-white" style="box-shadow: inset 0 0 0 3px var(--cobalt);"></span><p class="display-narrow font-bold text-cobalt">2000</p><p class="text-[0.9375rem] text-slate">First ISO 9001 certification (now ISO 9001:2015)</p></li>
+          <li class="relative"><span class="absolute -left-8 top-[.4rem] w-4 h-4 rounded-full bg-cobalt" style="box-shadow: 0 0 0 5px rgba(28,79,156,.18);"></span><p class="display-narrow font-bold text-cobalt">2025</p><p class="text-[0.9375rem] text-slate">Joins the Christeyns Group</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 9. About Sandpipers -->
     <section id="about" aria-labelledby="about-title" class="deep-bg grain text-white overflow-hidden">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <h2 id="about-title" class="display text-3xl sm:text-[2.4rem] font-[700]">About Sandpipers</h2>
-          <p class="mt-4 text-shallows/85 measure">A Singapore company supplying industrial cleaning chemicals since 2005.</p>
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <h2 id="about-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">About The Sandpipers Pte. Ltd.</h2>
+            <p class="mt-4 text-shallows/85">A Singapore company serving the industrial chemicals market since 2005.</p>
 
-          <ol class="mt-10 relative space-y-10 pl-8 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[2px] before:bg-white/20">
-            <li class="relative">
-              <span class="absolute -left-8 top-[.45rem] w-4 h-4 rounded-full bg-lagoon" style="box-shadow: 0 0 0 5px rgba(18,163,201,.25);"></span>
-              <p class="display-narrow text-lagoon font-bold text-lg">2005</p>
-              <h3 class="display-narrow text-xl font-semibold mt-1">Established in Singapore</h3>
-              <p class="mt-2 text-shallows/80 measure">The Sandpipers Pte. Ltd. was incorporated in Singapore on 29 September 2005 to serve the industrial chemicals market.</p>
-            </li>
-            <li class="relative">
-              <span class="absolute -left-8 top-[.45rem] w-4 h-4 rounded-full bg-white" style="box-shadow: 0 0 0 5px rgba(255,255,255,.18);"></span>
-              <p class="display-narrow text-white font-bold text-lg">Today</p>
-              <h3 class="display-narrow text-xl font-semibold mt-1">Industrial cleaning solutions</h3>
-              <p class="mt-2 text-shallows/80 measure">Sandpipers supplies RBS 25 and RBS 35 Concentrate, supporting industrial cleaning requirements in Singapore and Malaysia.</p>
-            </li>
-          </ol>
+            <ol class="mt-10 relative space-y-10 pl-8 before:absolute before:left-[0.4375rem] before:top-2 before:bottom-2 before:w-[0.125rem] before:bg-white/20">
+              <li class="relative">
+                <span class="absolute -left-8 top-[.45rem] w-4 h-4 rounded-full bg-lagoon" style="box-shadow: 0 0 0 5px rgba(18,163,201,.25);"></span>
+                <p class="display-narrow text-lagoon font-bold text-lg">2005</p>
+                <h3 class="display-narrow text-xl font-semibold mt-1">Established in Singapore</h3>
+                <p class="mt-2 text-shallows/80">The Sandpipers Pte. Ltd. was incorporated in Singapore on 29 September 2005 to serve the industrial chemicals market in Southeast Asia.</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-8 top-[.45rem] w-4 h-4 rounded-full bg-white" style="box-shadow: 0 0 0 5px rgba(255,255,255,.18);"></span>
+                <p class="display-narrow text-white font-bold text-lg">Today</p>
+                <h3 class="display-narrow text-xl font-semibold mt-1">Industrial cleaning solutions</h3>
+                <p class="mt-2 text-shallows/80">As the exclusive distributor of RBS 25 and RBS 35 Concentrate for Southeast Asia, Sandpipers exports from Singapore to customers throughout the region, supporting their industrial and laboratory cleaning requirements.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="img-frame rounded-[1.75rem] aspect-[4/3] lg:aspect-square" style="box-shadow: var(--shadow-floating);">
+            <img src="brand_assets/crops/scientist.png" alt="Scientist in a laboratory" width="640" height="427" style="object-position: 45% 30%;">
+            <div class="tint"></div>
+            <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
+          </div>
         </div>
 
-        <div class="img-frame rounded-[28px] aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]" style="box-shadow: var(--shadow-floating);">
-          <div class="absolute inset-0" style="background: url('brand_assets/3.png') no-repeat; background-size: 200% 100%; background-position: 100% 0%;"></div>
-          <div class="tint"></div>
-          <div class="fade bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
-          <p class="absolute left-6 right-6 bottom-5 text-white/90 text-[15px]">Supplying laboratories and industry in Singapore and Malaysia</p>
+        <h3 class="display-narrow text-2xl font-bold mt-16">Why buy from Sandpipers</h3>
+        <div class="mt-6 grid md:grid-cols-3 gap-5">
+          <div class="rounded-[1.5rem] p-7 bg-white/[.06]" style="box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);">
+            <span class="w-11 h-11 rounded-xl grid place-items-center bg-lagoon/20 text-lagoon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span>
+            <h4 class="display-narrow text-lg font-semibold mt-4">Exclusive distributor</h4>
+            <p class="mt-2 text-shallows/80 text-[0.9375rem]">The exclusive source of genuine RBS 25 and RBS 35 in Southeast Asia, appointed by the Belgian manufacturer.</p>
+          </div>
+          <div class="rounded-[1.5rem] p-7 bg-white/[.06]" style="box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);">
+            <span class="w-11 h-11 rounded-xl grid place-items-center bg-lagoon/20 text-lagoon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+            <h4 class="display-narrow text-lg font-semibold mt-4">Local support</h4>
+            <p class="mt-2 text-shallows/80 text-[0.9375rem]">Singapore-based team for enquiries, product selection, documentation, bulk orders and export shipments anywhere in Southeast Asia. Neither product is regulated as dangerous goods, which keeps export by sea, air or road simple.</p>
+          </div>
+          <div class="rounded-[1.5rem] p-7 bg-white/[.06]" style="box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);">
+            <span class="w-11 h-11 rounded-xl grid place-items-center bg-lagoon/20 text-lagoon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></span>
+            <h4 class="display-narrow text-lg font-semibold mt-4">Full documentation</h4>
+            <p class="mt-2 text-shallows/80 text-[0.9375rem]">Technical Data Sheets and Safety Data Sheets available for every product, ready for your QA and EHS teams.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- 10. Contact -->
     <section id="contact" aria-labelledby="contact-title" class="hero-bg grain">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24 grid lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-14 items-start">
-        <div>
-          <h2 id="contact-title" class="display text-3xl sm:text-[2.4rem] font-[700]">Contact us</h2>
-          <p class="mt-4 text-slate measure">Your Singapore supplier of RBS 25 and RBS 35 industrial cleaning chemicals.</p>
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
+        <h2 id="contact-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Request a quotation or technical advice</h2>
+        <p class="mt-4 text-slate">For pricing, availability, bulk orders, data sheets or help choosing between RBS 25 and RBS 35, contact our Singapore team. As the exclusive Southeast Asia distributor, we export to customers throughout the region.</p>
 
-          <div class="mt-8 rounded-[24px] p-7 text-white deep-bg" style="box-shadow: var(--shadow-floating);">
-            <h3 class="display-narrow text-xl font-semibold">Product enquiries</h3>
-            <p class="mt-3 text-shallows/85">For enquiries about RBS 25 Concentrate, RBS 35 Concentrate, product specifications, availability or bulk orders, please contact our Singapore team.</p>
-            <a class="btn btn-light mt-6" href="tel:+6597383680">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-              Call +65 9738 3680
-            </a>
-          </div>
-        </div>
+        <div class="mt-10 grid lg:grid-cols-[1.1fr_.9fr] gap-6 lg:gap-8 items-start">
+          <!-- Enquiry form -->
+          <form id="enquiry" class="bg-white rounded-[1.75rem] p-7 sm:p-9 grid sm:grid-cols-2 gap-5" style="box-shadow: var(--shadow-floating);" novalidate>
+            <h3 class="sm:col-span-2 display-narrow text-xl font-bold">Send an enquiry</h3>
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label for="f-product">Product</label>
+              <select id="f-product" name="product">
+                <option>RBS 25 Concentrate</option>
+                <option>RBS 35 Concentrate</option>
+                <option>Both products</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-qty">Quantity</label>
+              <input id="f-qty" name="quantity" type="text" placeholder="e.g. 10 × 20 kg drums">
+            </div>
+            <div class="field sm:col-span-2">
+              <label for="f-msg">Message</label>
+              <textarea id="f-msg" name="message" rows="5" placeholder="What do you clean, and how?"></textarea>
+            </div>
+            <div class="sm:col-span-2 flex flex-wrap items-center gap-4">
+              <button type="submit" class="btn btn-primary">Send enquiry</button>
+              <p id="form-status" class="text-[0.875rem] text-slate" role="status" aria-live="polite"></p>
+            </div>
+          </form>
 
-        <div class="bg-white rounded-[28px] overflow-hidden" style="box-shadow: var(--shadow-elevated);">
-          <div class="px-7 sm:px-9 py-6 flex items-center gap-4" style="border-bottom: 1px solid var(--line);">
-            <img src="brand_assets/logo-blue.png" alt="" width="122" height="36" class="h-9 w-auto rounded-md">
-            <p class="display-narrow font-bold text-lg">THE SANDPIPERS PTE. LTD.</p>
+          <!-- Company details -->
+          <div class="bg-white rounded-[1.75rem] overflow-hidden" style="box-shadow: var(--shadow-elevated);">
+            <div class="mx-7 pt-8 pb-4 flex items-center gap-4" style="border-bottom: 1px solid var(--line);">
+              <p class="display-narrow font-bold text-[1.4375rem] leading-tight">The Sandpipers Pte. Ltd.</p>
+            </div>
+            <dl class="spec px-7 py-1 text-[0.9375rem]">
+              <div class="py-4"><dt class="text-slate text-[0.875rem]">UEN</dt><dd class="font-semibold">200513565G</dd></div>
+              <div class="py-4">
+                <dt class="text-slate text-[0.875rem]">Address</dt>
+                <dd>
+                  <span class="font-semibold">60 Paya Lebar Road, #06-33 Paya Lebar Square, Singapore 409051</span><br>
+                  <a class="link text-[0.875rem]" href="https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2306-33+Paya+Lebar+Square+Singapore+409051" target="_blank" rel="noopener">Open in Google Maps</a>
+                </dd>
+              </div>
+              <div class="py-4"><dt class="text-slate text-[0.875rem]">Telephone</dt><dd><a class="link" href="tel:+6597383680">+65 9738 3680</a></dd></div>
+              <div class="py-4">
+                <dt class="text-slate text-[0.875rem]">Email</dt>
+                <dd><a class="link" href="mailto:sandpipers.jackie@gmail.com">sandpipers.jackie@gmail.com</a></dd>
+              </div>
+            </dl>
           </div>
-          <dl class="px-7 sm:px-9 py-2 text-[15px]">
-            <div class="grid sm:grid-cols-[160px_1fr] gap-x-6 gap-y-1 py-4" style="border-bottom: 1px solid var(--line);">
-              <dt class="text-slate">UEN</dt><dd class="font-semibold">200513565G</dd>
-            </div>
-            <div class="grid sm:grid-cols-[160px_1fr] gap-x-6 gap-y-1 py-4" style="border-bottom: 1px solid var(--line);">
-              <dt class="text-slate">Country</dt><dd class="font-semibold">Singapore</dd>
-            </div>
-            <div class="grid sm:grid-cols-[160px_1fr] gap-x-6 gap-y-1 py-4" style="border-bottom: 1px solid var(--line);">
-              <dt class="text-slate">Year established</dt><dd class="font-semibold">2005</dd>
-            </div>
-            <div class="grid sm:grid-cols-[160px_1fr] gap-x-6 gap-y-1 py-4" style="border-bottom: 1px solid var(--line);">
-              <dt class="text-slate">Address</dt>
-              <dd>
-                <span class="font-semibold">60 Paya Lebar Road, #06-33 Paya Lebar Square, Singapore 409051</span><br>
-                <a class="link text-[14px]" href="https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2306-33+Paya+Lebar+Square+Singapore+409051" target="_blank" rel="noopener">Open in Google Maps</a>
-              </dd>
-            </div>
-            <div class="grid sm:grid-cols-[160px_1fr] gap-x-6 gap-y-1 py-4" style="border-bottom: 1px solid var(--line);">
-              <dt class="text-slate">Telephone</dt><dd><a class="link" href="tel:+6597383680">+65 9738 3680</a></dd>
-            </div>
-            <div class="grid sm:grid-cols-[160px_1fr] gap-x-6 gap-y-1 py-4">
-              <dt class="text-slate">Email</dt>
-              <!-- TODO: replace with the company email, e.g. <a class="link" href="mailto:sales@example.com">sales@example.com</a> -->
-              <dd class="text-slate">Coming soon. Please call us in the meantime.</dd>
-            </div>
-          </dl>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-tide text-shallows/75 text-[14px]">
-    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-      <div class="flex items-center gap-4">
-        <img src="brand_assets/logo-blue.png" alt="Sandpipers" width="122" height="36" class="h-9 w-auto rounded-md" style="box-shadow: 0 0 0 1px rgba(255,255,255,.12);">
-        <p>© 2026 The Sandpipers Pte. Ltd. UEN 200513565G</p>
-      </div>
-      <p class="md:text-right md:max-w-sm">RBS products are manufactured by Chemical Products s.a., Brussels, Belgium.</p>
+  <footer class="bg-tide text-shallows/75 text-[0.875rem]">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-10 flex flex-col md:flex-row md:items-baseline gap-6 md:gap-10">
+      <span class="site-logo site-logo--footer self-start md:self-auto md:top-[1.375rem]" role="img" aria-label="Sandpipers"><svg class="site-logo__bird" viewBox="0 0 64 46" aria-hidden="true"><path d="M2 32 L14 29 C20 26 26 25 31 25 L37 3 C40 11 41 19 38 25 C42 24 45 23 48 22 L63 19 L49 25 C46 30 38 34 28 34 C18 34 10 33 2 32 Z"/></svg><span class="site-logo__word">Sandpipers</span></span>
+      <p>© 2026 The Sandpipers Pte. Ltd. (UEN 200513565G). Exclusive distributor of RBS 25 and RBS 35 in Southeast Asia. RBS products are manufactured by Chemical Products R. Borghgraef S.A., Brussels, Belgium, a member of the Christeyns Group.</p>
     </div>
   </footer>
+
+  <!-- WhatsApp chat -->
+  <div class="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-40 flex flex-col items-end gap-3">
+    <div id="wa-panel" class="wa-panel w-[calc(100vw-2rem)] max-w-[21.25rem] rounded-[1.375rem] overflow-hidden bg-white" data-open="false" role="dialog" aria-labelledby="wa-title" aria-hidden="true">
+      <div class="deep-bg text-white px-5 py-4 flex items-center gap-3">
+        <span class="wa-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>
+        <div class="flex-1 leading-tight">
+          <p id="wa-title" class="font-semibold">The Sandpipers</p>
+          <p class="text-[0.8125rem] text-shallows/80">Replies on WhatsApp</p>
+        </div>
+        <button type="button" class="wa-close w-9 h-9 rounded-full grid place-items-center text-white/90" aria-label="Close chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="bg-foam px-5 py-5">
+        <p class="inline-block max-w-[90%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-[0.9375rem] leading-snug" style="box-shadow: var(--shadow-elevated);">Hi,<br><br>Chat with us about RBS 25 or RBS 35, pricing, stock or bulk orders.</p>
+      </div>
+      <form id="wa-form" class="flex items-end gap-2 p-3" style="border-top: 1px solid var(--line);">
+        <label for="wa-msg" class="sr-only">Your message</label>
+        <textarea id="wa-msg" rows="2" class="flex-1 resize-none rounded-xl px-3 py-2 text-[0.9375rem] leading-snug border border-[var(--line)] focus-visible:outline-none focus-visible:border-[var(--lagoon)]" placeholder="Type your message"></textarea>
+        <button type="submit" class="wa-send w-11 h-11 rounded-full grid place-items-center bg-cobalt text-white flex-none" aria-label="Send on WhatsApp" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+        </button>
+      </form>
+      <p class="px-4 pb-3 -mt-1 text-[0.75rem] text-slate">Sending opens WhatsApp with your message to +65 9738 3680.</p>
+    </div>
+    <button type="button" class="wa-launcher" aria-controls="wa-panel" aria-expanded="false">
+      <span class="wa-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>
+      Chat with us
+    </button>
+  </div>
 
   <script>
     const btn = document.querySelector('.menu-btn');
@@ -607,6 +1019,65 @@
     btn.addEventListener('click', () => setMenu(menu.dataset.open !== 'true'));
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+    // Enquiry form: opens the visitor's email app with the enquiry filled in.
+    const ENQUIRY_EMAIL = 'sandpipers.jackie@gmail.com';
+    const form = document.getElementById('enquiry');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const missing = ['name', 'company'].filter((k) => !String(data.get(k)).trim());
+      if (missing.length) {
+        status.textContent = 'Add your name and company so we know who the enquiry is from.';
+        form.querySelector(`[name="${missing[0]}"]`).focus();
+        return;
+      }
+      if (!ENQUIRY_EMAIL) {
+        status.innerHTML = 'Online enquiries open soon. Please call <a class="link" href="tel:+6597383680">+65 9738 3680</a>.';
+        return;
+      }
+      const subject = `Enquiry: ${data.get('product')} (${data.get('company')})`;
+      const body = [
+        `Name: ${data.get('name')}`,
+        `Company: ${data.get('company')}`,
+        `Product: ${data.get('product')}`,
+        `Quantity: ${data.get('quantity')}`,
+        '',
+        data.get('message'),
+      ].join('\n');
+      window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      status.textContent = 'Your email app should open with the enquiry ready to send.';
+    });
+
+    // WhatsApp chat: sends the typed message to the Sandpipers WhatsApp number.
+    const WHATSAPP_NUMBER = '6597383680';
+    const waPanel = document.getElementById('wa-panel');
+    const waLauncher = document.querySelector('.wa-launcher');
+    const waForm = document.getElementById('wa-form');
+    const waMsg = document.getElementById('wa-msg');
+    const waSend = waForm.querySelector('.wa-send');
+    const setChat = (open) => {
+      waPanel.dataset.open = String(open);
+      waPanel.setAttribute('aria-hidden', String(!open));
+      waLauncher.setAttribute('aria-expanded', String(open));
+      if (open) waMsg.focus();
+    };
+    waLauncher.addEventListener('click', () => setChat(waPanel.dataset.open !== 'true'));
+    waPanel.querySelector('.wa-close').addEventListener('click', () => { setChat(false); waLauncher.focus(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && waPanel.dataset.open === 'true') { setChat(false); waLauncher.focus(); } });
+    waMsg.addEventListener('input', () => { waSend.disabled = !waMsg.value.trim(); });
+    waMsg.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); waForm.requestSubmit(); }
+    });
+    waForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = waMsg.value.trim();
+      if (!text) return;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      waMsg.value = '';
+      waSend.disabled = true;
+    });
   </script>
 </body>
 </html>
