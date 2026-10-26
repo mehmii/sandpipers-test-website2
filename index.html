@@ -948,6 +948,14 @@
               <input id="f-company" name="company" type="text" autocomplete="organization" required>
             </div>
             <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone <span class="font-normal text-slate">(optional)</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
               <label for="f-product">Product</label>
               <select id="f-product" name="product">
                 <option>RBS 25 Concentrate</option>
@@ -964,6 +972,8 @@
               <label for="f-msg">Message</label>
               <textarea id="f-msg" name="message" rows="5" placeholder="What do you clean, and how?"></textarea>
             </div>
+            <!-- spam trap: hidden from people, bots fill it in and FormSubmit discards the message -->
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
             <div class="sm:col-span-2 flex flex-wrap items-center gap-4">
               <button type="submit" class="btn btn-primary">Send enquiry</button>
               <p id="form-status" class="text-[0.875rem] text-slate" role="status" aria-live="polite"></p>
@@ -987,7 +997,7 @@
               <div class="py-4"><dt class="text-slate text-[0.875rem]">Telephone</dt><dd><a class="link" href="tel:+6597383680">+65 9738 3680</a></dd></div>
               <div class="py-4">
                 <dt class="text-slate text-[0.875rem]">Email</dt>
-                <dd><a class="link" href="mailto:sandpipers.jackie@gmail.com">sandpipers.jackie@gmail.com</a></dd>
+                <dd><a class="link" href="mailto:sales@sandpipers.com.sg">sales@sandpipers.com.sg</a></dd>
               </div>
             </dl>
           </div>
@@ -1046,34 +1056,60 @@
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
-    // Enquiry form: opens the visitor's email app with the enquiry filled in.
-    const ENQUIRY_EMAIL = 'sandpipers.jackie@gmail.com';
+    // Enquiry form: sends the enquiry straight to the sales inbox through FormSubmit (formsubmit.co).
+    // The first enquiry ever sent triggers a one-time activation email to this address.
+    const ENQUIRY_EMAIL = 'sales@sandpipers.com.sg';
     const form = document.getElementById('enquiry');
     const status = document.getElementById('form-status');
-    form.addEventListener('submit', (e) => {
+    const sendBtn = form.querySelector('button[type="submit"]');
+    const fallback = `Please call <a class="link" href="tel:+6597383680">+65 9738 3680</a> or email <a class="link" href="mailto:${ENQUIRY_EMAIL}">${ENQUIRY_EMAIL}</a>.`;
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = new FormData(form);
-      const missing = ['name', 'company'].filter((k) => !String(data.get(k)).trim());
+      const get = (k) => String(data.get(k) || '').trim();
+      const missing = ['name', 'company', 'email'].filter((k) => !get(k));
       if (missing.length) {
-        status.textContent = 'Add your name and company so we know who the enquiry is from.';
+        status.textContent = 'Add your name, company and email so we can reply to you.';
         form.querySelector(`[name="${missing[0]}"]`).focus();
         return;
       }
-      if (!ENQUIRY_EMAIL) {
-        status.innerHTML = 'Online enquiries open soon. Please call <a class="link" href="tel:+6597383680">+65 9738 3680</a>.';
+      if (!form.querySelector('[name="email"]').checkValidity()) {
+        status.textContent = 'Check your email address. It should look like name@company.com.';
+        form.querySelector('[name="email"]').focus();
         return;
       }
-      const subject = `Enquiry: ${data.get('product')} (${data.get('company')})`;
-      const body = [
-        `Name: ${data.get('name')}`,
-        `Company: ${data.get('company')}`,
-        `Product: ${data.get('product')}`,
-        `Quantity: ${data.get('quantity')}`,
-        '',
-        data.get('message'),
-      ].join('\n');
-      window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = 'Your email app should open with the enquiry ready to send.';
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending…';
+      status.textContent = '';
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${ENQUIRY_EMAIL}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: `Website enquiry: ${get('product')} (${get('company')})`,
+            _replyto: get('email'),
+            _template: 'table',
+            _captcha: 'false',
+            _honey: get('_honey'),
+            Name: get('name'),
+            Company: get('company'),
+            Email: get('email'),
+            Phone: get('phone'),
+            Product: get('product'),
+            Quantity: get('quantity'),
+            Message: get('message'),
+          }),
+        });
+        const result = await res.json().catch(() => ({}));
+        if (!res.ok || String(result.success) !== 'true') throw new Error(result.message || res.status);
+        form.reset();
+        status.textContent = `Enquiry sent. We'll reply to ${get('email')} soon.`;
+      } catch (err) {
+        status.innerHTML = `Your enquiry couldn't be sent. ${fallback}`;
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send enquiry';
+      }
     });
 
     // WhatsApp chat: sends the typed message to the Sandpipers WhatsApp number.
