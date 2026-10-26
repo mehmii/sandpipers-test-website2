@@ -944,8 +944,8 @@
               <input id="f-name" name="name" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="f-company">Company</label>
-              <input id="f-company" name="company" type="text" autocomplete="organization" required>
+              <label for="f-company">Company <span class="font-normal text-slate">(optional)</span></label>
+              <input id="f-company" name="company" type="text" autocomplete="organization">
             </div>
             <div class="field">
               <label for="f-email">Email</label>
@@ -1067,9 +1067,9 @@
       e.preventDefault();
       const data = new FormData(form);
       const get = (k) => String(data.get(k) || '').trim();
-      const missing = ['name', 'company', 'email'].filter((k) => !get(k));
+      const missing = ['name', 'email'].filter((k) => !get(k));
       if (missing.length) {
-        status.textContent = 'Add your name, company and email so we can reply to you.';
+        status.textContent = 'Add your name and email so we can reply to you.';
         form.querySelector(`[name="${missing[0]}"]`).focus();
         return;
       }
@@ -1086,7 +1086,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            _subject: `Website enquiry: ${get('product')} (${get('company')})`,
+            _subject: `Website enquiry: ${get('product')} (${get('company') || get('name')})`,
             _replyto: get('email'),
             _template: 'table',
             _captcha: 'false',
