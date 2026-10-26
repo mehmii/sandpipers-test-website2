@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RBS 25 &amp; RBS 35 Concentrate Singapore &amp; Southeast Asia | Exclusive Distributor | The Sandpipers</title>
-  <meta name="description" content="The Sandpipers Pte. Ltd. is the exclusive Southeast Asia distributor of RBS 25 and RBS 35 Concentrate, exporting from Singapore across the region. Alkaline cleaners for manual and ultrasonic cleaning of glassware, optics, metal parts and electronics.">
+  <title>RBS 25 &amp; RBS 35 Concentrate Singapore &amp; Southeast Asia | Authorised Distributor Since 2005 | The Sandpipers</title>
+  <meta name="description" content="The Sandpipers Pte. Ltd. has been an authorised distributor of RBS 25 and RBS 35 Concentrate since 2005, exporting from Singapore across the region. Alkaline cleaners for manual and ultrasonic cleaning of glassware, optics, metal parts and electronics.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -275,6 +275,21 @@
       .btn, .doc, .logo-link, .nav-link::after, #mobile-menu { transition: none; }
     }
 
+    /* scrolling text strip: two identical groups slide left by one group width, so the loop is seamless */
+    .ticker { overflow: hidden; }
+    .ticker__track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+    .ticker:hover .ticker__track { animation-play-state: paused; }
+    .ticker__group { display: flex; flex: none; white-space: nowrap; }
+    .ticker__group > span { display: inline-flex; align-items: center; }
+    .ticker__group > span::after { content: ''; width: .4rem; height: .4rem; border-radius: 999px; background: var(--red); margin: 0 2.5rem; }
+    .ticker b { font-weight: 700; margin-left: .3em; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .ticker__track { animation: none; width: auto; }
+      .ticker__group { white-space: normal; padding: 0 1.25rem; }
+      .ticker__group > span:not(:first-child), .ticker__group[aria-hidden], .ticker__group > span::after { display: none; }
+    }
+
     /* WhatsApp chat */
     .wa-launcher {
       display: inline-flex; align-items: center; gap: .65rem;
@@ -323,7 +338,7 @@
         <a class="nav-link" href="#safety">Safety</a>
         <a class="nav-link" href="#about">About</a>
         <a class="nav-link" href="#contact">Contact</a>
-        <a class="btn btn-primary text-[0.9375rem] !py-2.5" href="#enquiry">Request a quotation</a>
+        <a class="btn btn-primary text-[0.9375rem] !py-2.5" href="#enquiry">Get an instant quote</a>
       </nav>
       <button class="menu-btn lg:hidden w-11 h-11 rounded-xl grid place-items-center text-tide active:scale-95" style="box-shadow: inset 0 0 0 1.5px var(--line);" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -336,7 +351,7 @@
         <a class="nav-link py-3 self-start" href="#safety">Safety</a>
         <a class="nav-link py-3 self-start" href="#about">About</a>
         <a class="nav-link py-3 self-start" href="#contact">Contact</a>
-        <a class="btn btn-primary mt-3 self-start" href="#enquiry">Request a quotation</a>
+        <a class="btn btn-primary mt-3 self-start" href="#enquiry">Get an instant quote</a>
       </nav>
     </div>
   </header>
@@ -347,12 +362,12 @@
     <section class="hero-bg grain overflow-hidden">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 pt-12 pb-14 md:pt-16 md:pb-20 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-center">
         <div class="seq">
-          <p class="eyebrow font-semibold">Exclusive Southeast Asia Distributor of RBS 25 &amp; RBS 35</p>
+          <p class="eyebrow font-semibold">Authorised Distributor of RBS 25 &amp; RBS 35 since 2005</p>
           <h1 class="display mt-4 text-[2.2rem] sm:text-[2.9rem] lg:text-[3.4rem] font-[750] text-tide">
             Precision cleaning concentrates for laboratories and industry
           </h1>
           <p class="mt-6 text-[1.0625rem] text-slate">
-            The Sandpipers Pte. Ltd. is the exclusive distributor of RBS 25 Concentrate and RBS 35 Concentrate in Southeast Asia, exporting from Singapore to customers across the region. Manufactured in Belgium by Chemical Products R. Borghgraef S.A., these concentrated alkaline cleaners remove grease, oils, proteins and mineral residues, and rinse away completely without leaving any trace or film.
+            The Sandpipers Pte. Ltd. has been an authorised distributor of RBS 25 Concentrate and RBS 35 Concentrate since 2005, exporting from Singapore to customers across the region. Manufactured in Belgium by Chemical Products R. Borghgraef S.A., these concentrated alkaline cleaners remove grease, oils, proteins and mineral residues, and rinse away completely without leaving any trace or film.
           </p>
           <ul class="mt-7 flex flex-wrap gap-3" aria-label="Cleaning methods">
             <li class="badge badge-method">
@@ -369,7 +384,7 @@
             </li>
           </ul>
           <div class="mt-8 flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="#enquiry">Request a quotation</a>
+            <a class="btn btn-primary" href="#enquiry">Get an instant quote</a>
             <a class="btn btn-ghost" href="#compare">Compare RBS 25 and RBS 35</a>
           </div>
           <ul class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[0.875rem] text-slate" aria-label="Credentials">
@@ -390,9 +405,20 @@
 
     <!-- Callout strip -->
     <div class="bg-tide text-white" style="border-top: 3px solid var(--red);">
-      <p class="mx-auto max-w-6xl px-5 sm:px-8 py-5 text-[1rem] sm:text-[1.0625rem] font-medium">
-        For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <span class="font-bold whitespace-nowrap" style="color: var(--red-on-navy);">Just 20 ml per litre of water.</span>
-      </p>
+      <div class="ticker py-5 text-[1rem] sm:text-[1.0625rem] font-medium">
+        <div class="ticker__track">
+          <p class="ticker__group">
+            <span>For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <b style="color: var(--red-on-navy);">Just 20 ml per litre of water.</b></span>
+            <span aria-hidden="true">For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <b style="color: var(--red-on-navy);">Just 20 ml per litre of water.</b></span>
+            <span aria-hidden="true">For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <b style="color: var(--red-on-navy);">Just 20 ml per litre of water.</b></span>
+          </p>
+          <p class="ticker__group" aria-hidden="true">
+            <span>For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <b style="color: var(--red-on-navy);">Just 20 ml per litre of water.</b></span>
+            <span>For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <b style="color: var(--red-on-navy);">Just 20 ml per litre of water.</b></span>
+            <span>For manual and ultrasonic cleaning of glassware, optics, metal parts and electronics. <b style="color: var(--red-on-navy);">Just 20 ml per litre of water.</b></span>
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- 2. Cleaning methods -->
@@ -522,9 +548,9 @@
       <!-- RBS 25 -->
       <article id="rbs-25" aria-labelledby="rbs25" class="mx-auto max-w-6xl px-5 sm:px-8 pt-16 md:pt-24 pb-12 md:pb-16 grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-14 items-start">
         <div class="lg:sticky lg:top-[6.25rem]">
-          <div class="rounded-[1.75rem] deep-bg aspect-square relative overflow-hidden max-w-md mx-auto lg:max-w-none" style="box-shadow: var(--shadow-floating);">
-            <div class="absolute inset-[8%] rounded-full" style="background: radial-gradient(closest-side, rgba(18,163,201,.35), transparent 75%);"></div>
-            <img src="brand_assets/rbs25-cutout.png" alt="RBS 25 Concentrate, 5 litre bottle" width="452" height="576" class="absolute inset-[11%] w-[78%] h-[78%] object-contain" style="filter: drop-shadow(0 24px 32px rgba(0,0,0,.35));">
+          <div class="rounded-[1.75rem] shallows-bg aspect-square relative overflow-hidden max-w-md mx-auto lg:max-w-none" style="box-shadow: var(--shadow-floating);">
+            <div class="absolute inset-[8%] rounded-full" style="background: radial-gradient(closest-side, rgba(255,255,255,.9), transparent 75%);"></div>
+            <img src="brand_assets/rbs25-cutout.png" alt="RBS 25 Concentrate, 5 litre bottle" width="452" height="576" class="absolute inset-[11%] w-[78%] h-[78%] object-contain" style="filter: drop-shadow(0 24px 32px rgba(12,35,64,.22));">
           </div>
           <div class="mt-5 grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
             <a class="doc" href="brand_assets/25concafp.pdf" target="_blank" rel="noopener">
@@ -870,7 +896,7 @@
                 <span class="absolute -left-8 top-[.45rem] w-4 h-4 rounded-full bg-white" style="box-shadow: 0 0 0 5px rgba(255,255,255,.18);"></span>
                 <p class="display-narrow text-white font-bold text-lg">Today</p>
                 <h3 class="display-narrow text-xl font-semibold mt-1">Industrial cleaning solutions</h3>
-                <p class="mt-2 text-shallows/80">As the exclusive distributor of RBS 25 and RBS 35 Concentrate for Southeast Asia, Sandpipers exports from Singapore to customers throughout the region, supporting their industrial and laboratory cleaning requirements.</p>
+                <p class="mt-2 text-shallows/80">As an authorised distributor of RBS 25 and RBS 35 Concentrate since 2005, Sandpipers exports from Singapore to customers throughout the region, supporting their industrial and laboratory cleaning requirements.</p>
               </li>
             </ol>
           </div>
@@ -886,8 +912,8 @@
         <div class="mt-6 grid md:grid-cols-3 gap-5">
           <div class="rounded-[1.5rem] p-7 bg-white/[.06]" style="box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);">
             <span class="w-11 h-11 rounded-xl grid place-items-center bg-lagoon/20 text-lagoon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span>
-            <h4 class="display-narrow text-lg font-semibold mt-4">Exclusive distributor</h4>
-            <p class="mt-2 text-shallows/80 text-[0.9375rem]">The exclusive source of genuine RBS 25 and RBS 35 in Southeast Asia, appointed by the Belgian manufacturer.</p>
+            <h4 class="display-narrow text-lg font-semibold mt-4">Authorised distributor</h4>
+            <p class="mt-2 text-shallows/80 text-[0.9375rem]">An authorised distributor of genuine RBS 25 and RBS 35 since 2005, appointed by the Belgian manufacturer.</p>
           </div>
           <div class="rounded-[1.5rem] p-7 bg-white/[.06]" style="box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);">
             <span class="w-11 h-11 rounded-xl grid place-items-center bg-lagoon/20 text-lagoon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
@@ -906,8 +932,8 @@
     <!-- 10. Contact -->
     <section id="contact" aria-labelledby="contact-title" class="hero-bg grain">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 md:py-24">
-        <h2 id="contact-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Request a quotation or technical advice</h2>
-        <p class="mt-4 text-slate">For pricing, availability, bulk orders, data sheets or help choosing between RBS 25 and RBS 35, contact our Singapore team. As the exclusive Southeast Asia distributor, we export to customers throughout the region.</p>
+        <h2 id="contact-title" class="section-title display text-3xl sm:text-[2.4rem] font-[700]">Get an instant quote or technical advice</h2>
+        <p class="mt-4 text-slate">For pricing, availability, bulk orders, data sheets or help choosing between RBS 25 and RBS 35, contact our Singapore team. As an authorised distributor since 2005, we export to customers throughout the region.</p>
 
         <div class="mt-10 grid lg:grid-cols-[1.1fr_.9fr] gap-6 lg:gap-8 items-start">
           <!-- Enquiry form -->
@@ -973,7 +999,7 @@
   <footer class="bg-tide text-shallows/75 text-[0.875rem]">
     <div class="mx-auto max-w-6xl px-5 sm:px-8 py-10 flex flex-col md:flex-row md:items-baseline gap-6 md:gap-10">
       <span class="site-logo site-logo--footer self-start md:self-auto md:top-[1.375rem]" role="img" aria-label="Sandpipers"><svg class="site-logo__bird" viewBox="0 0 64 46" aria-hidden="true"><path d="M2 32 L14 29 C20 26 26 25 31 25 L37 3 C40 11 41 19 38 25 C42 24 45 23 48 22 L63 19 L49 25 C46 30 38 34 28 34 C18 34 10 33 2 32 Z"/></svg><span class="site-logo__word">Sandpipers</span></span>
-      <p>© 2026 The Sandpipers Pte. Ltd. (UEN 200513565G). Exclusive distributor of RBS 25 and RBS 35 in Southeast Asia. RBS products are manufactured by Chemical Products R. Borghgraef S.A., Brussels, Belgium, a member of the Christeyns Group.</p>
+      <p>© 2026 The Sandpipers Pte. Ltd. (UEN 200513565G). Authorised distributor of RBS 25 and RBS 35 since 2005. RBS products are manufactured by Chemical Products R. Borghgraef S.A., Brussels, Belgium, a member of the Christeyns Group.</p>
     </div>
   </footer>
 
