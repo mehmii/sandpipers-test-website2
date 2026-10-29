@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sandpipers.com.sg/sitemap.xml
